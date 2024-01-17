@@ -3,10 +3,8 @@ import mongoose from "mongoose";
 const connect = async () => {
   try {
     if (mongoose.connection.readyState !== 1) {
-      await mongoose.connect(process.env.MONGO_URL, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      });
+      // Use the new connection options without useNewUrlParser and useUnifiedTopology
+      await mongoose.connect(process.env.MONGO_URL);
       console.log("Mongo Connection successfully established.");
     } else {
       console.log("MongoDB is already connected.");

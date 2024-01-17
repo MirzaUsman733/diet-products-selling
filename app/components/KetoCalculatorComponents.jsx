@@ -18,6 +18,8 @@ import DetailWeight from './ketoComponents/DetailWeight';
 import DetailFat from './ketoComponents/DetailFat';
 import DetailActivity from './ketoComponents/DetailActivity';
 import DetailBodyType from './ketoComponents/DetailBodyType';
+import Link from 'next/link';
+
 // Style
 const style = {
   position: 'absolute',
@@ -450,16 +452,17 @@ export default function KetoCalculatorComponents() {
           />
         </div>
         <BMIComponent bmi={bmi} />
-        <Button variant="contained" onClick={handleButtonClick}>
+         <Butto variant="contained" onClick={handleButtonClick}>
           Click Button If you Lose our weight
         </Button>
         <br />
         <br />
         {showContent && (
           <>
-           <Button variant="contained" onClick={handleBodyShapeClick}>
-          Click Button for Check Body Shape 
-        </Button>
+            <Button variant="contained" onClick={handleBodyShapeClick}>
+              Click Button for Check Body Shape
+            </Button>
+
           {bodyTypeContent && 
             <BodyTypeComponent
             bodyImage={bodyImage}

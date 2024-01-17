@@ -1,6 +1,6 @@
 // Import necessary types from React and MUI
 import React, { FC, ChangeEvent } from "react";
-import { RadioGroup, FormControlLabel, Radio, IconButton } from "@mui/material";
+import { RadioGroup, FormControlLabel, Radio, IconButton,Button } from "@mui/material";
 import LaptopIcon from "@mui/icons-material/Laptop";
 import SportsMartialArtsIcon from "@mui/icons-material/SportsMartialArts";
 import InfoIcon from "@mui/icons-material/Info";
@@ -26,13 +26,13 @@ const ActivityComponent: FC<ActivityComponentProps> = ({
       <div className="mb-4">
         <span className="inline-block text-lg mb-4">Your Activity Level </span>
         <Link href="#" passHref>
-          <a
+          <Button
             style={{ color: "#5A5A5A" }}
             onClick={scrollToActivityDetail}
             className="inline-block text-xl"
           >
             <InfoIcon />
-          </a>
+          </Button>
         </Link>
       </div>
       <RadioGroup
