@@ -62,10 +62,10 @@ const LoginComponent = ({ open, handleClose,handleOpenCreate,style }) => {
                   </Button>
                   <Grid container spacing={2} direction="row">
                   <Grid item xs={12} sm={6} className='text-center'>
-                    <Button variant='contained' size='large'>FACEBOOK &nbsp; &nbsp;<FacebookIcon/> </Button>
+                    <button variant='contained' size='large'>FACEBOOK &nbsp; &nbsp;<FacebookIcon/> </button>
                     </Grid>
                     <Grid item xs={12} sm={6} className='text-center'>
-                    <Button variant='contained' color='success' size='large'>Google &nbsp; &nbsp; <Google/> </Button>
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">Google &nbsp; &nbsp; <Google/> </button>
                   </Grid>
                   </Grid>
               </div>

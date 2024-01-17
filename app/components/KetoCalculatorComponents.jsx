@@ -18,7 +18,7 @@ import DetailWeight from './ketoComponents/DetailWeight';
 import DetailFat from './ketoComponents/DetailFat';
 import DetailActivity from './ketoComponents/DetailActivity';
 import DetailBodyType from './ketoComponents/DetailBodyType';
-import Link from 'next/link';
+// import Link from 'next/link';
 
 // Style
 const style = {
@@ -452,16 +452,16 @@ export default function KetoCalculatorComponents() {
           />
         </div>
         <BMIComponent bmi={bmi} />
-         <Butto variant="contained" onClick={handleButtonClick}>
+        <button className="bg-blue-500 hover:bg-blue-700 text-white my-2 py-2 px-4 rounded" onClick={handleButtonClick}>
           Click Button If you Lose our weight
-        </Button>
+        </button>
         <br />
         <br />
         {showContent && (
           <>
-            <Button variant="contained" onClick={handleBodyShapeClick}>
+            <button className="bg-blue-500 hover:bg-blue-700 text-white my-2 py-2 px-4 rounded" onClick={handleBodyShapeClick}>
               Click Button for Check Body Shape
-            </Button>
+            </button>
 
           {bodyTypeContent && 
             <BodyTypeComponent
@@ -502,14 +502,14 @@ export default function KetoCalculatorComponents() {
               customDuration={customDuration}
               setCustomDuration={setCustomDuration}
             />
-            <Button variant="contained" onClick={calculateKetoProfile}>
+            <button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" onClick={calculateKetoProfile}>
               {' '}
               Calculate Keto Profile{' '}
-            </Button>
+            </button>
             <ResultComponent result={result} />
-            <Button variant="contained" onClick={handleOpen}>
+            <button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" onClick={handleOpen}>
               Modal Open
-            </Button>
+            </button>
             <LoginComponent
               open={open}
               handleClose={handleClose}

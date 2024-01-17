@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+@import '@/app/css/ketoHomeHeader.css';
+@import '@/app/css/ketoCalculator.css';
+@import '@/app/css/auth.css';
