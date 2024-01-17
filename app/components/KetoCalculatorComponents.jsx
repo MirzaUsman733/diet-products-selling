@@ -1,9 +1,9 @@
+"use client"
 import React, { useEffect, useState, useCallback } from 'react';
 import GenderAgeComponent from './ketoComponents/GenderAgeComponent';
 import { Button, Container, InputLabel } from '@mui/material';
 import HeightWeightComponent from './ketoComponents/HeightWeightComponent';
 import InfoIcon from '@mui/icons-material/Info';
-import { Link } from 'react-router-dom';
 import BMIComponent from './ketoComponents/BMIComponent';
 import ActivityComponent from './ketoComponents/ActivityComponent';
 import BodyTypeComponent from './ketoComponents/BodyTypeComponent';
@@ -18,7 +18,6 @@ import DetailWeight from './ketoComponents/DetailWeight';
 import DetailFat from './ketoComponents/DetailFat';
 import DetailActivity from './ketoComponents/DetailActivity';
 import DetailBodyType from './ketoComponents/DetailBodyType';
-
 // Style
 const style = {
   position: 'absolute',
@@ -427,13 +426,13 @@ export default function KetoCalculatorComponents() {
               Your Weight & height
             </InputLabel>
             {'  '}
-            <Link style={{ color: '#5A5A5A' }} onClick={scrollToWeightDetail}>
+            <Button style={{ color: '#5A5A5A' }} onClick={scrollToWeightDetail}>
               {'   '}
               <InfoIcon
                 className="d-inline-block fs-3"
                 style={{ marginBottom: '10px' }}
               />{' '}
-            </Link>
+            </Button>
           </div>
           <HeightWeightComponent
             weight={weight}

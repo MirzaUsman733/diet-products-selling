@@ -1,8 +1,8 @@
 // GoalsComponent.js
 import React from 'react';
-import { RadioGroup, FormControlLabel, Radio } from '@mui/material';
+import { RadioGroup, FormControlLabel, Radio, Button } from '@mui/material';
 import InfoIcon from '@mui/icons-material/Info';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const GoalsComponent = ({
   goalsValue,
@@ -24,13 +24,13 @@ const GoalsComponent = ({
         <span className="d-inline-block fs-4 mb-4">
           Your End Goals of a Ketogenic diet?{' '}
         </span>{' '}
-        <Link style={{ color: '	#5A5A5A' }} onClick={scrollToGoalsDetail}>
+        <Button style={{ color: '	#5A5A5A' }} onClick={scrollToGoalsDetail}>
           {' '}
           <InfoIcon
             className="d-inline-block fs-3"
             style={{ marginBottom: '10px' }}
           />{' '}
-        </Link>
+        </Button>
       </div>
       <RadioGroup
         row

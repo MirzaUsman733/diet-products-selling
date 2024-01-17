@@ -1,7 +1,7 @@
 import { Container } from '@mui/material'
 import React from 'react'
 
-export default function DetailWeight() {
+const DetailWeight: React.FC = () => {
   return (
     <>
       <h3 className="mb-3">
@@ -28,3 +28,4 @@ export default function DetailWeight() {
     </>
   )
 }
+export default DetailWeight;

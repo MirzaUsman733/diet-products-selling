@@ -1,7 +1,7 @@
 import { Container } from '@mui/material'
 import React from 'react'
 
-export default function DetailBodyType() {
+const DetailBodyType: React.FC = () => {
   return (
     <>
       <h3 className="mb-3">Why do you need to know my activity level?</h3>
@@ -31,3 +31,4 @@ export default function DetailBodyType() {
     </>
   )
 }
+export default DetailBodyType;

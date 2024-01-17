@@ -1,6 +1,6 @@
 // GenderAgeComponent.js
 import React from 'react';
-import { Link, InputLabel, Grid, Radio, RadioGroup, FormControlLabel, TextField, IconButton } from '@mui/material';
+import { Link, InputLabel, Grid, Radio, RadioGroup, FormControlLabel, TextField, IconButton, Button } from '@mui/material';
 import InfoIcon from '@mui/icons-material/Info';
 import Male from '@mui/icons-material/Male';
 import Female from '@mui/icons-material/Female';
@@ -29,10 +29,10 @@ const GenderAgeComponent = ({
       </InputLabel>{' '}
       &nbsp;
       {'  '}
-      <Link style={{ color: '#5A5A5A' }} onClick={scrollFunction}>
+      <Button style={{ color: '#5A5A5A' }} onClick={scrollFunction}>
         {'   '}
         <InfoIcon className="d-inline-block fs-3" />{' '}
-      </Link>
+      </Button>
     </div>
     <div className="text-center">
       <Grid container spacing={2} direction="row">

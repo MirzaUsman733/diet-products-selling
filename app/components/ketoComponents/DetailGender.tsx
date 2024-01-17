@@ -1,7 +1,7 @@
 import { Container } from '@mui/material'
 import React from 'react'
 
-export default function DetailGender() {
+const DetailGender: React.FC = () => {
   return (
     <>
      <h3 className="mb-3">
@@ -34,3 +34,4 @@ export default function DetailGender() {
     </>
   )
 }
+export default DetailGender;

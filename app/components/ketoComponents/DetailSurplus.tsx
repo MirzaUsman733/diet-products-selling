@@ -1,6 +1,7 @@
+import { Container } from '@mui/material';
 import React from 'react'
 
-export default function DetailSurplus() {
+const DetailSurplus: React.FC = () => {
   return (
     <>
       <h3 className="mb-3">What is a deficit/surplus?</h3>
@@ -33,3 +34,4 @@ export default function DetailSurplus() {
     </>
   )
 }
+export default DetailSurplus;

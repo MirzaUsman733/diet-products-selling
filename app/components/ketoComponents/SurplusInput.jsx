@@ -2,7 +2,7 @@ import React from 'react';
 import TextField from '@mui/material/TextField';
 import { InputAdornment, InputLabel } from '@mui/material';
 import InfoIcon from '@mui/icons-material/Info';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const SurplusInput = ({ surplus, setSurplus,scrollToSurplusDetail }) => {
   return (
@@ -22,13 +22,13 @@ const SurplusInput = ({ surplus, setSurplus,scrollToSurplusDetail }) => {
     </InputLabel>{' '}
     &nbsp;
     {'  '}
-    <Link
+    <button
       style={{ color: '#5A5A5A' }}
       onClick={scrollToSurplusDetail}
     >
       {'   '}
       <InfoIcon className="d-inline-block fs-3" />{' '}
-    </Link>
+    </button>
   </div>
     <TextField
       className="mb-4"

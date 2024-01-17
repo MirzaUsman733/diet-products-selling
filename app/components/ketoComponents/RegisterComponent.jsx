@@ -1,4 +1,4 @@
-// RegisterComponent.js
+"use client"
 import React, { useState } from 'react';
 import { Modal, Box, Typography, Divider, FormControl, Button, TextField, Grid } from '@mui/material';
 import FacebookIcon from '@mui/icons-material/Facebook';

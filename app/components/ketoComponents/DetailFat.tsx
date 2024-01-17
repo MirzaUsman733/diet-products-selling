@@ -1,7 +1,7 @@
 import { Container } from '@mui/material'
 import React from 'react'
 
-export default function DetailFat() {
+const DetailFat: React.FC = () => {
   return (
     <>
      <h3 className="mb-3">Why do you need my body fat percentage?</h3>
@@ -31,3 +31,4 @@ export default function DetailFat() {
     </>
   )
 }
+export default DetailFat;
