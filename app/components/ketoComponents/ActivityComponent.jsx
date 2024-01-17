@@ -1,4 +1,3 @@
-// ActivityComponent.js
 import React from 'react';
 import { RadioGroup, FormControlLabel, Radio, IconButton } from '@mui/material';
 import LaptopIcon from '@mui/icons-material/Laptop';
@@ -6,7 +5,7 @@ import SportsMartialArtsIcon from '@mui/icons-material/SportsMartialArts';
 import InfoIcon from '@mui/icons-material/Info';
 import SnowshoeingIcon from '@mui/icons-material/Snowshoeing';
 import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const ActivityComponent = ({
   activityValue,
