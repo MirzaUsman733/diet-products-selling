@@ -1,33 +1,28 @@
-// GoalsComponent.js
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import { RadioGroup, FormControlLabel, Radio, Button } from '@mui/material';
 import InfoIcon from '@mui/icons-material/Info';
-import Link from 'next/link';
 
-const GoalsComponent = ({
+interface GoalsComponentProps {
+  goalsValue: string;
+  handleGoalsChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  scrollToGoalsDetail: () => void;
+}
+
+const GoalsComponent: React.FC<GoalsComponentProps> = ({
   goalsValue,
   handleGoalsChange,
   scrollToGoalsDetail,
-}) => {
-  return (
-    <>
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: '40px',
-      }}
-    >
+}) => (
+  <>
+    <div className="flex flex-col justify-center items-center mt-8">
       <div>
-        <span className="d-inline-block fs-4 mb-4">
+        <span className="inline-block text-2xl mb-4">
           Your End Goals of a Ketogenic diet?{' '}
         </span>{' '}
         <Button style={{ color: '	#5A5A5A' }} onClick={scrollToGoalsDetail}>
           {' '}
           <InfoIcon
-            className="d-inline-block fs-3"
+            className="inline-block text-3xl"
             style={{ marginBottom: '10px' }}
           />{' '}
         </Button>
@@ -79,9 +74,8 @@ const GoalsComponent = ({
         />
       </RadioGroup>
     </div>
-    <hr />
-    </>
-  );
-};
+    <hr className="my-4" />
+  </>
+);
 
 export default GoalsComponent;
