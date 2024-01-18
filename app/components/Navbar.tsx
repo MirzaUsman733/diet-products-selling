@@ -10,9 +10,9 @@ interface HeaderProps {}
 
 const links = [
   { path: "/frontend", label: "Home" },
-  { path: "/frontend/commentGenerated", label: "Comments" },
-  { path: "/frontend/history", label: "A.History" },
-  { path: "/frontend/commentsHistory", label: "C.History" },
+  { path: "/frontend/products", label: "Products" },
+  { path: "/frontend/categories", label: "Categories" },
+  { path: "/frontend/cart", label: "Cart" },
 ];
 
 export default function Header(props: HeaderProps): JSX.Element {
@@ -21,7 +21,7 @@ export default function Header(props: HeaderProps): JSX.Element {
   const { userWithEmail } = useUser();
   const userEmail = userWithEmail?.email;
   const isAdmin = userWithEmail?.role === "admin";
-
+  console.log(userWithEmail)
   const renderLinks = () => {
     return links.map((link, index) => (
       <li key={index}>
@@ -62,7 +62,7 @@ export default function Header(props: HeaderProps): JSX.Element {
             </li>
           )}
           {renderLinks()}
-          {session && (
+          {session ? (
             <li>
               <button
                 onClick={() => {
@@ -75,6 +75,15 @@ export default function Header(props: HeaderProps): JSX.Element {
                 Logout
               </button>
             </li>
+          ) : (
+            <>
+              <Link href="/login">
+                <li>Login</li>
+              </Link>
+              <Link href="/register">
+                <li>Register</li>
+              </Link>
+            </>
           )}
         </ul>
         {/* Responsive menu */}
