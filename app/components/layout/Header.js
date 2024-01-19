@@ -1,7 +1,7 @@
 'use client';
-import {CartContext} from "@/components/AppContext";
-import Bars2 from "@/components/icons/Bars2";
-import ShoppingCart from "@/components/icons/ShoppingCart";
+import {CartContext} from "@/app/components/AppContext";
+import Bars2 from "@/app/components/icons/Bars2";
+import ShoppingCart from "@/app/components/icons/ShoppingCart";
 import {signOut, useSession} from "next-auth/react";
 import Link from "next/link";
 import {useContext, useState} from "react";

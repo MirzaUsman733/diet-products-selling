@@ -2,7 +2,7 @@ import {CartContext} from "@/app/components/AppContext";
 import MenuItemTile from "@/app/components/menu/MenuItemTile";
 import Image from "next/image";
 import {useContext, useState} from "react";
-import FlyingButton from "react-flying-item";
+// import FlyingButton from "react-flying-item";
 import toast from "react-hot-toast";
 
 export default function MenuItem(menuItem) {
@@ -62,11 +62,11 @@ export default function MenuItem(menuItem) {
             <div
               className="overflow-y-scroll p-2"
               style={{maxHeight:'calc(100vh - 100px)'}}>
-              <Image
+              {/* <Image
                 src={image}
                 alt={name}
                 width={300} height={200}
-                className="mx-auto" />
+                className="mx-auto" /> */}
               <h2 className="text-lg font-bold text-center mb-2">{name}</h2>
               <p className="text-center text-gray-500 text-sm mb-2">
                 {description}
@@ -105,7 +105,7 @@ export default function MenuItem(menuItem) {
                   ))}
                 </div>
               )}
-              <FlyingButton
+              <button
                 targetTop={'5%'}
                 targetLeft={'95%'}
                 src={image}>
@@ -113,7 +113,7 @@ export default function MenuItem(menuItem) {
                      onClick={handleAddToCartButtonClick}>
                   Add to cart ${selectedPrice}
                 </div>
-              </FlyingButton>
+              </button>
               <button
                 className="mt-2"
                 onClick={() => setShowPopup(false)}>
