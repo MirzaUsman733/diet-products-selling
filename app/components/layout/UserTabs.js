@@ -15,28 +15,28 @@ export default function UserTabs({isAdmin}) {
       {isAdmin && (
         <>
           <Link
-            href={'/categories'}
-            className={path === '/categories' ? 'active' : ''}
+            href={'/dashboard/categories'}
+            className={path === '/dashboard/categories' ? 'active' : ''}
           >
             Categories
           </Link>
           <Link
-            href={'/menu-items'}
-            className={path.includes('menu-items') ? 'active' : ''}
+            href={'/dashboard/menu-items'}
+            className={path.includes('/dashboard/menu-items') ? 'active' : ''}
           >
             Menu Items
           </Link>
           <Link
-            className={path.includes('/users') ? 'active' : ''}
-            href={'/users'}
+            className={path.includes('/dashboard/users') ? 'active' : ''}
+            href={'/dashboard/users'}
           >
             Users
           </Link>
         </>
       )}
       <Link
-        className={path === '/orders' ? 'active' : ''}
-        href={'/orders'}
+        className={path === '/dashboard/orders' ? 'active' : ''}
+        href={'/dashboard/orders'}
       >
         Orders
       </Link>
