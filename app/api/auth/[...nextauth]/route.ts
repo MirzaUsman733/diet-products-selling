@@ -16,13 +16,15 @@ export const authOptions: any = {
         email: { label: "Email", type: "text" },
         password: { label: "Password", type: "password" },
       },
-      async authorize(credentials: any) {
+      async authorize(
+        credentials: Record<"name" | "email" | "password", string> | undefined
+      ) {
         await connect();
         try {
-          const user = await User.findOne({ email: credentials.email });
+          const user = await User.findOne({ email: credentials?.email });
           if (user) {
             const isPasswordCorrect = await bcrypt.compare(
-              credentials.password,
+              credentials?.password,
               user.password
             );
             if (isPasswordCorrect && user.approved) {

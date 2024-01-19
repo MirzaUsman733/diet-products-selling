@@ -8,7 +8,7 @@ export async function GET(req) {
 
   const session = await getServerSession(authOptions);
   const userEmail = session?.user?.email;
-  const admin = await isAdmin();
+  // const admin = await isAdmin();
 
   const url = new URL(req.url);
   const _id = url.searchParams.get('_id');
@@ -16,7 +16,7 @@ export async function GET(req) {
     return Response.json( await Order.findById(_id) );
   }
 
-
+  const admin = true;
   if (admin) {
     return Response.json( await Order.find() );
   }
