@@ -1,5 +1,5 @@
 "use client";
-import { useUserDataContext } from "@/app/contexts/UserDataContext";
+import { useUserDataContext } from "@/app/contexts/userDataContext";
 
 const UserDataDashboard: React.FC = () => {
 

@@ -1,67 +1,67 @@
-import NextAuth from 'next-auth';
-import { Account, User as AuthUser } from 'next-auth';
-import GithubProvider from 'next-auth/providers/github';
-import CredentialsProvider from 'next-auth/providers/credentials';
-import bcrypt from 'bcryptjs';
-import User from '@/app/models/User';
-import connect from '@/app/utils/db';
+import NextAuth from "next-auth";
+import { Account, User as AuthUser } from "next-auth";
+import GithubProvider from "next-auth/providers/github";
+import CredentialsProvider from "next-auth/providers/credentials";
+import bcrypt from "bcryptjs";
+import User from "@/app/models/User";
+import connect from "@/app/utils/db";
 
 export const authOptions: any = {
   providers: [
     CredentialsProvider({
-      id: 'credentials',
-      name: 'Credentials',
+      id: "credentials",
+      name: "Credentials",
       credentials: {
-        name: { label: 'Name', type: 'text' },
-        email: { label: 'Email', type: 'text' },
-        password: { label: 'Password', type: 'password' },
+        name: { label: "Name", type: "text" },
+        email: { label: "Email", type: "text" },
+        password: { label: "Password", type: "password" },
       },
       async authorize(credentials: any) {
         await connect();
-           try {
-             const user = await User.findOne({ email: credentials.email });
-             if (user) {
-               const isPasswordCorrect = await bcrypt.compare(
-                 credentials.password,
-                 user.password
-               );
-               if (isPasswordCorrect && user.approved) {
-                 // Redirect to "/frontend" on successful authentication and approval
-                 return Promise.resolve(user);
-               } else if (!user.approved) {
-                 // User is not approved, return appropriate error message
-                 throw new Error('Admin approval pending');
-               } else {
-                 // Incorrect password, return appropriate error message
-                 throw new Error('User Password is incorrect');
-               }
-             } else {
-               // User not found or invalid credentials, return appropriate error message
-               throw new Error('Invalid email or password');
-             }
-           } catch (err: any) {
-             throw new Error(err);
-           }
+        try {
+          const user = await User.findOne({ email: credentials.email });
+          if (user) {
+            const isPasswordCorrect = await bcrypt.compare(
+              credentials.password,
+              user.password
+            );
+            if (isPasswordCorrect && user.approved) {
+              // Redirect to "/frontend" on successful authentication and approval
+              return Promise.resolve(user);
+            } else if (!user.approved) {
+              // User is not approved, return appropriate error message
+              throw new Error("Admin approval pending");
+            } else {
+              // Incorrect password, return appropriate error message
+              throw new Error("Invalid Credential");
+            }
+          } else {
+            // User not found or invalid credentials, return appropriate error message
+            throw new Error("Invalid email or password");
+          }
+        } catch (err: any) {
+          throw new Error(err);
+        }
       },
     }),
     GithubProvider({
-      clientId: process.env.GITHUB_ID || '',
-      clientSecret: process.env.GITHUB_SECRET || '',
+      clientId: process.env.GITHUB_ID || "",
+      clientSecret: process.env.GITHUB_SECRET || "",
     }),
   ],
   callbacks: {
     async signIn({ user, account }: { user: AuthUser; account: Account }) {
-      if (account?.provider == 'credentials') {
+      if (account?.provider == "credentials") {
         return true;
       }
-      if (account?.provider == 'github') {
+      if (account?.provider == "github") {
         await connect();
         try {
           const existingUser = await User.findOne({ email: user.email });
           if (!existingUser) {
             const newUser = new User({
               email: user.email,
-              role: 'user',
+              role: "user",
               approved: false,
             });
 
@@ -71,12 +71,12 @@ export const authOptions: any = {
             if (existingUser.approved) {
               return true;
             } else {
-              console.log('User approval pending');
+              console.log("User approval pending");
               return false;
             }
           }
         } catch (err) {
-          console.log('Error saving user', err);
+          console.log("Error saving user", err);
           return false;
         }
       }
