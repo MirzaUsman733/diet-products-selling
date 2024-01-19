@@ -8,6 +8,9 @@ const UserInfoSchema = new Schema({
   country: {type: String},
   phone: {type: String},
   admin: {type: Boolean, default: false},
-}, {timestamps: true});
+},  {
+    versionKey: false,
+    timestamps: true, // Combine options into a single object
+  });
 
 export const UserInfo = models?.UserInfo || model('UserInfo', UserInfoSchema);

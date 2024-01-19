@@ -9,6 +9,9 @@ const OrderSchema = new Schema({
   country: String,
   cartProducts: Object,
   paid: {type: Boolean, default: false},
-}, {timestamps: true});
+},  {
+    versionKey: false,
+    timestamps: true, // Combine options into a single object
+  });
 
 export const Order = models?.Order || model('Order', OrderSchema);
