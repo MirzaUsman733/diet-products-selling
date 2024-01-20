@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="hero mt-20">
+    <section className="hero mt-20 container-xl mx-auto md:max-w-[700px] lg:max-w-[1000px] xl:max-w-[1200px] 2xl:max-w-[1500px]">
       <div className="container-xl mx-auto text-center md:text-left">
         <h1 className="text-4xl font-semibold">
           Everything<br />
@@ -26,9 +26,6 @@ export default function Hero() {
             <Right />
           </button>
         </div>
-      </div>
-      <div className="relative hidden md:block">
-        <Image src={'/Diet Products.png'} layout={'fill'} objectFit={'contain'} alt={'Diet Product'} />
       </div>
     </section>
   );
