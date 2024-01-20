@@ -3,9 +3,11 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { getServerSession } from "next-auth";
 import SessionProvider from "@/app/utils/SessionProvider";
+import {AppProvider} from "@/app/components/AppContext";
 import { UserProvider } from "@/app/contexts/userData";
 import { UserDataProvider } from "@/app/contexts/userDataContext";
 import Navbar from "./components/Navbar";
+import {Toaster} from "react-hot-toast";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -24,9 +26,13 @@ export default async function RootLayout({
       <body className={inter.className}>
         <UserProvider>
           <SessionProvider session={session}>
+           
            <UserDataProvider>
+          <AppProvider>
+ <Toaster />
         <Navbar />
             <div className="gap-2 mb-10">{children}</div>
+              </AppProvider>
           </UserDataProvider>
           </SessionProvider>
         </UserProvider>

@@ -17,7 +17,7 @@ function AuthLinks({status, userName}) {
         </Link>
         <button
           onClick={() => signOut()}
-          className="bg-primary rounded-full text-white px-8 py-2">
+          className="bg-blue-500 rounded-full text-white px-8 py-2">
           Logout
         </button>
       </>
@@ -27,7 +27,7 @@ function AuthLinks({status, userName}) {
     return (
       <>
         <Link href={'/login'}>Login</Link>
-        <Link href={'/register'} className="bg-primary rounded-full text-white px-8 py-2">
+        <Link href={'/register'} className="bg-blue-500 rounded-full text-white px-8 py-2">
           Register
         </Link>
       </>
@@ -55,7 +55,7 @@ export default function Header() {
           <Link href={'/cart'} className="relative">
             <ShoppingCart />
             {cartProducts?.length > 0 && (
-              <span className="absolute -top-2 -right-4 bg-primary text-white text-xs py-1 px-1 rounded-full leading-3">
+              <span className="absolute -top-2 -right-4 bg-blue-500 text-white text-xs py-1 px-1 rounded-full leading-3">
             {cartProducts.length}
           </span>
             )}
@@ -93,7 +93,7 @@ export default function Header() {
           <Link href={'/cart'} className="relative">
             <ShoppingCart />
             {cartProducts?.length > 0 && (
-              <span className="absolute -top-2 -right-4 bg-primary text-white text-xs py-1 px-1 rounded-full leading-3">
+              <span className="absolute -top-2 -right-4 bg-blue-500 text-white text-xs py-1 px-1 rounded-full leading-3">
             {cartProducts.length}
           </span>
             )}

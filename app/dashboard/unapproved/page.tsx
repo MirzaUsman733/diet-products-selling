@@ -1,7 +1,7 @@
 "use client"
 import React from "react";
 import { redirect } from "next/navigation";
-import Approval from "@/components/Approval";
+import Approval from "@/app/components/Approval";
 import { useUser } from "@/app/contexts/userData";
 
 const page = () => {

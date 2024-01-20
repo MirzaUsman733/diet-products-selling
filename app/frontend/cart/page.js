@@ -1,10 +1,10 @@
 'use client';
-import {CartContext, cartProductPrice} from "@/components/AppContext";
-import Trash from "@/components/icons/Trash";
-import AddressInputs from "@/components/layout/AddressInputs";
-import SectionHeaders from "@/components/layout/SectionHeaders";
-import CartProduct from "@/components/menu/CartProduct";
-import {useProfile} from "@/components/UseProfile";
+import { CartContext, cartProductPrice } from "@/app/components/AppContext";
+import Trash from "@/app/components/icons/Trash";
+import AddressInputs from "@/app/components/layout/AddressInputs";
+import SectionHeaders from "@/app/components/layout/SectionHeaders";
+import CartProduct from "@/app/components/menu/CartProduct";
+import { useProfile } from "@/app/components/UseProfile";
 import Image from "next/image";
 import {useContext, useEffect, useState} from "react";
 import toast from "react-hot-toast";
@@ -118,7 +118,7 @@ export default function CartPage() {
               addressProps={address}
               setAddressProp={handleAddressChange}
             />
-            <button type="submit">Pay ${subtotal+5}</button>
+            <button type="submit" className="bg-blue-500">Pay ${subtotal+5}</button>
           </form>
         </div>
       </div>
