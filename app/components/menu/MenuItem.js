@@ -52,6 +52,7 @@ export default function MenuItem(menuItem) {
 
   return (
     <>
+      
       {showPopup && (
         <div
           onClick={() => setShowPopup(false)}

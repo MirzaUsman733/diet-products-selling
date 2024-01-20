@@ -1,4 +1,4 @@
-import mongoose, {model, models, Schema} from "mongoose";
+import mongoose, { model, models, Schema } from "mongoose";
 
 const ExtraPriceSchema = new Schema({
   name: String,
@@ -7,12 +7,12 @@ const ExtraPriceSchema = new Schema({
 
 const MenuItemSchema = new Schema({
   // image: {type: String},
-  name: {type: String},
-  description: {type: String},
-  category: {type: mongoose.Types.ObjectId},
-  basePrice: {type: Number},
-  sizes: {type:[ExtraPriceSchema]},
-  extraIngredientPrices: {type:[ExtraPriceSchema]},
+  name: { type: String },
+  description: { type: String },
+  category: { type: mongoose.Types.ObjectId },
+  basePrice: { type: Number },
+  sizes: { type: [ExtraPriceSchema] },
+  extraIngredientPrices: { type: [ExtraPriceSchema] },
 }, {
   versionKey: false,
   timestamps: true, // Combine options into a single object
