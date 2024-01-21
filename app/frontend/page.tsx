@@ -69,7 +69,6 @@ export default function page() {
                 placeholder="Write something.."
                 style={{ height: 200 }}
               ></textarea>
-
               <input type="submit" value="Submit" />
             </form>
           </div>
