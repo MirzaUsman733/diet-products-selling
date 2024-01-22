@@ -1,6 +1,7 @@
 import {model, models, Schema} from "mongoose";
 
 const OrderSchema = new Schema({
+  _id: Schema.Types.ObjectId,
   userEmail: String,
   phone: String,
   streetAddress: String,

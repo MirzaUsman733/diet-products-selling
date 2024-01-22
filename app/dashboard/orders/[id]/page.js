@@ -6,11 +6,12 @@ import CartProduct from "@/app/components/menu/CartProduct";
 import {useParams} from "next/navigation";
 import {useContext, useEffect, useState} from "react";
 
-export default function OrderPage() {
+export default function page() {
+  const {id} = useParams();
+  console.log(id)
   const {clearCart} = useContext(CartContext);
   const [order, setOrder] = useState();
   const [loadingOrder, setLoadingOrder] = useState(true);
-  const {id} = useParams();
   useEffect(() => {
     if (typeof window.console !== "undefined") {
       if (window.location.href.includes('clear-cart=1')) {
@@ -79,3 +80,5 @@ export default function OrderPage() {
     </section>
   );
 }
+
+

@@ -24,7 +24,7 @@ export default function OrdersPage() {
       })
     })
   }
-
+console.log("Orders",orders)
   return (
     <section className="mt-8 max-w-2xl mx-auto">
       <UserTabs />
@@ -56,7 +56,7 @@ export default function OrdersPage() {
               </div>
             </div>
             <div className="justify-end flex gap-2 items-center whitespace-nowrap">
-              <Link href={"/orders/"+order._id} className="button">
+              <Link href={"/dashboard/orders/"+order._id} className="button">
                 Show order
               </Link>
             </div>
