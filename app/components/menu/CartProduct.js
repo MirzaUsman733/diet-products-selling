@@ -1,4 +1,4 @@
-import { cartProductPrice } from "@/app/components/AppContext";
+import { cartProductPrice } from "@/app/contexts/AppContext";
 import Trash from "@/app/components/icons/Trash";
 import Image from "next/image";
 

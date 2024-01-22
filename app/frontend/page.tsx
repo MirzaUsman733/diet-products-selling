@@ -34,9 +34,6 @@ export default function page() {
           mainHeader={"Contact us"}
         />
         <div className="mt-8">
-          {/* <a className="text-4xl underline text-gray-500" href="tel:+46738123123">
-            +46 738 123 123
-          </a> */}
           <div className="container container-xl mx-auto md:max-w-[700px] lg:max-w-[1000px] xl:max-w-[1200px] 2xl:max-w-[1500px]">
             <form action="/action_page.php">
               <label htmlFor="fname">First Name</label>

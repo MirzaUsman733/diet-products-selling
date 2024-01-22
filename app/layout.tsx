@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { getServerSession } from "next-auth";
 import SessionProvider from "@/app/utils/SessionProvider";
-import { AppProvider } from "@/app/components/AppContext";
+import { AppProvider } from "@/app/contexts/AppContext";
 import { UserProvider } from "@/app/contexts/userData";
 import { UserDataProvider } from "@/app/contexts/userDataContext";
 import Navbar from "./components/Navbar";
