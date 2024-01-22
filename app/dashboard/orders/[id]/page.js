@@ -1,5 +1,5 @@
 'use client';
-import {CartContext, cartProductPrice} from "@/app/components/AppContext";
+import {CartContext, cartProductPrice} from "@/app/contexts/AppContext";
 import AddressInputs from "@/app/components/layout/AddressInputs";
 import SectionHeaders from "@/app/components/layout/SectionHeaders";
 import CartProduct from "@/app/components/menu/CartProduct";
