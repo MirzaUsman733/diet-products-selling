@@ -5,7 +5,7 @@ import MenuItemPriceProps from "@/app/components/layout/MenuItemPriceProps";
 import { useEffect, useState } from "react";
 
 export default function MenuItemForm({ onSubmit, menuItem }) {
-  // const [image, setImage] = useState(menuItem?.image || '');
+  const [image, setImage] = useState(menuItem?.image || '');
   const [name, setName] = useState(menuItem?.name || '');
   const [description, setDescription] = useState(menuItem?.description || '');
   const [basePrice, setBasePrice] = useState(menuItem?.basePrice || '');
@@ -35,7 +35,7 @@ export default function MenuItemForm({ onSubmit, menuItem }) {
     >
       <div className="md:grid items-start gap-4 grid-cols-[1fr,3fr]">
         <div>
-          {/* <EditableImage link={image} setLink={setImage} /> */}
+          <EditableImage link={image} setLink={setImage} />
         </div>
         <div className="flex-grow">
           <label className="block text-sm font-medium text-gray-700">Item name</label>
