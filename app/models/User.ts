@@ -1,4 +1,5 @@
 import mongoose, { Schema, Document } from "mongoose";
+import { ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js';
 
 interface User extends Document {
   name: string;
@@ -6,9 +7,11 @@ interface User extends Document {
   password?: string;
   role: string;
   approved: boolean;
+  resetToken: string;
+  resetTokenExpiry: Date;
 }
 
-const userSchema = new Schema < User > (
+const userSchema = new Schema<User>(
   {
     name: {
       type: String,
@@ -25,12 +28,19 @@ const userSchema = new Schema < User > (
     },
     role: {
       type: String,
-      required: true,
     },
     approved: {
       type: Boolean,
       default: false,
     },
+    resetToken: {
+      type: String,
+      required: false,
+    },
+    resetTokenExpiry: {
+      type: Date,
+      required: false,
+    }
   },
   {
     versionKey: false,
