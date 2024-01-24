@@ -1,7 +1,7 @@
 import AddToCartButton from "@/app/components/menu/AddToCartButton";
 
 export default function MenuItemTile({onAddToCart, ...item}) {
-  const {image, description, name, basePrice,
+  const { image, productDetail, direction, name, basePrice,
     sizes, extraIngredientPrices,
   } = item;
   const hasSizesOrExtras = sizes?.length > 0 || extraIngredientPrices?.length > 0;
@@ -13,7 +13,10 @@ export default function MenuItemTile({onAddToCart, ...item}) {
       </div> */}
       <h4 className="font-semibold text-xl my-3">{name}</h4>
       <p className="text-gray-500 text-sm line-clamp-3">
-        {description}
+        {productDetail}
+      </p>
+      <p className="text-gray-500 text-sm line-clamp-3">
+        {direction}
       </p>
       <AddToCartButton
         image={image}

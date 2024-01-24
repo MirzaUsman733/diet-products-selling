@@ -7,8 +7,8 @@ import toast from "react-hot-toast";
 
 export default function MenuItem(menuItem) {
   const {
-    image,name,description,basePrice,
-    sizes, extraIngredientPrices,
+    image, name, productDetail, direction ,basePrice,
+    sizes, extraIngredientPrices, description,
   } = menuItem;
   const [
     selectedSize, setSelectedSize
@@ -70,8 +70,15 @@ export default function MenuItem(menuItem) {
                 className="mx-auto" /> */}
               <h2 className="text-lg font-bold text-center mb-2">{name}</h2>
               <p className="text-center text-gray-500 text-sm mb-2">
-                {description}
+                {productDetail}
               </p>
+              <p className="text-center text-gray-500 text-sm mb-2">
+                {direction}
+              </p>
+              <div
+                className="edt"
+                dangerouslySetInnerHTML={{ __html: description }}
+              />
               {sizes?.length > 0 && (
                 <div className="py-2">
                   <h3 className="text-center text-gray-700">Pick your size</h3>

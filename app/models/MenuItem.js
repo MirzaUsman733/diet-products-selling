@@ -6,16 +6,18 @@ const ExtraPriceSchema = new Schema({
 });
 
 const MenuItemSchema = new Schema({
-  image: {type: String},
+  // image: {type: String},
   name: { type: String },
-  description: { type: String },
+  productDetail: { type: String },
+  direction: { type: String },
   category: { type: mongoose.Types.ObjectId },
   basePrice: { type: Number },
+  description: {type: String},
   sizes: { type: [ExtraPriceSchema] },
   extraIngredientPrices: { type: [ExtraPriceSchema] },
 }, {
   versionKey: false,
-  timestamps: true, // Combine options into a single object
+  timestamps: true,
 });
 
 export const MenuItem = models?.MenuItem || model('MenuItem', MenuItemSchema);

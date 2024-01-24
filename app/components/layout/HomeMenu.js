@@ -16,14 +16,6 @@ export default function HomeMenu() {
   return (
     <section className="container-xl mx-auto md:max-w-[700px] lg:max-w-[1000px] xl:max-w-[1200px] 2xl:max-w-[1500px]">
        <div className="text-center md:text-left">
-      <div className="absolute left-0 right-0 w-full justify-start">
-        <div className="absolute left-0 -top-[70px] text-left -z-10">
-          {/* <Image src={'https://plus.unsplash.com/premium_photo-1676047258657-b94091fa5297?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8c2FsYWR8ZW58MHx8MHx8fDA%3D'} width={109} height={189}  alt={'Diet Menu'} /> */}
-        </div>
-        <div className="absolute -top-[320px] right-10 -z-10">
-          <Image src={'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2FsYWR8ZW58MHx8MHx8fDA%3D'}  height={250} width={450} style={{borderRadius: '60%'}} alt={'Diet Menu'} />
-        </div>
-      </div>
       <div className="text-center mb-4 container-xl mx-auto">
         <SectionHeaders
           subHeader={'check out'}

@@ -2,11 +2,22 @@ import Header from "@/app/components/layout/Header";
 import Hero from "@/app/components/layout/Hero";
 import HomeMenu from "@/app/components/layout/HomeMenu";
 import SectionHeaders from "@/app/components/layout/SectionHeaders";
+import Carousel from '@/app/components/homePageComponents/Carousel';
 
 export default function page() {
+   const carouselItems = [
+     {
+       imageSrc:
+         "https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGhlYWx0aCUyMG1laWRjaW5lc3xlbnwwfHwwfHx8MA%3D%3D",
+       caption: "Caption 1",
+     },
+     { imageSrc: "https://images.unsplash.com/photo-1512867957657-38dbae50a35b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGhlYWx0aCUyMG1laWRjaW5lc3xlbnwwfHwwfHx8MA%3D%3D", caption: "Caption 2" },
+     // Add more items as needed
+   ];
   return (
     <>
-      <Hero />
+      {/* <Hero /> */}
+       <Carousel />
       <HomeMenu />
       <section className="text-center my-16" id="about">
         <SectionHeaders subHeader={"Our story"} mainHeader={"About us"} />

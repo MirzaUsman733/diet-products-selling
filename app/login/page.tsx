@@ -2,16 +2,15 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { signIn, useSession } from "next-auth/react";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 const Login = () => {
   const router = useRouter();
   const [error, setError] = useState("");
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const { data: session, status: sessionStatus } = useSession();
   useEffect(() => {
-
-    if ( sessionStatus === "authenticated") {
+    if (sessionStatus === "authenticated") {
       router.replace("/");
     }
   }, [sessionStatus]);
@@ -25,16 +24,16 @@ const Login = () => {
     e.preventDefault();
 
     if (!isValidEmail(email)) {
-      setError('Email is invalid');
+      setError("Email is invalid");
       return;
     }
 
     if (!password || password.length < 8) {
-      setError('Password is invalid');
+      setError("Password is invalid");
       return;
     }
 
-    const res = await signIn('credentials', {
+    const res = await signIn("credentials", {
       redirect: false,
       email,
       password,
@@ -42,9 +41,9 @@ const Login = () => {
 
     if (res?.error) {
       setError(res.error);
-      if (!res?.error) router.replace('/frontend');
+      if (!res?.error) router.replace("/frontend");
     } else {
-      setError('');
+      setError("");
     }
   };
   if (sessionStatus === "loading") {
@@ -52,10 +51,12 @@ const Login = () => {
   }
 
   return (
-    sessionStatus !== 'authenticated' && (
+    sessionStatus !== "authenticated" && (
       <div className="flex min-h-screen flex-col items-center justify-between p-24">
         <div className="bg-[#212121] p-8 rounded shadow-md w-96">
-          <h1 className="text-4xl text-center font-semibold mb-8 text-white">Login</h1>
+          <h1 className="text-4xl text-center font-semibold mb-8 text-white">
+            Login
+          </h1>
           <form onSubmit={handleSubmit}>
             <input
               type="text"
@@ -77,17 +78,16 @@ const Login = () => {
               type="submit"
               className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
             >
-              {' '}
+              {" "}
               Sign In
             </button>
             <p className="text-red-600 text-[16px] mb-4">{error && error}</p>
           </form>
-          <div>
-          </div>
+          <div></div>
           <button
             className="w-full bg-black text-white py-2 rounded hover:bg-gray-800"
             onClick={() => {
-              signIn('github');
+              signIn("github");
             }}
           >
             Sign In with Github

@@ -5,7 +5,22 @@
 @import '@/app/css/ketoHomeHeader.css';
 @import '@/app/css/ketoCalculator.css';
 @import '@/app/css/auth.css';
+/* html,
+body {
+    width: 1720px;
+    margin: 0 auto;
+    overflow-x: hidden;
+}
+@media screen and (max-width: 1720px) {
+    .mobile-hide {
+        display: none;
+    }
+} */
 
+body{
+    max-width: 100%;
+    overflow-x: hidden;
+}
 section.hero {
     @apply block md:grid;
     grid-template-columns: .4fr .6fr;
@@ -96,3 +111,46 @@ input[type=submit]:hover {
   background-color: #f2f2f2;
   padding: 20px;
 }
+
+
+
+/* styles.module.css */
+
+/* styles.module.css */
+
+.carouselItem {
+  position: relative;
+}
+
+.centeredContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  text-align: center;
+}
+
+/* Customize navigation arrows */
+.prevArrow,
+.nextArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.nextArrow {
+  right: 10px;
+}
+
+.prevArrow {
+  left: 10px;
+}
+
+
