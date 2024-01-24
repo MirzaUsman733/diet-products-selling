@@ -1,29 +1,23 @@
+import React from 'react';
 import AddToCartButton from "@/app/components/menu/AddToCartButton";
+import Carousel from '@/app/components/homePageComponents/CustomCarousel';
 
-export default function MenuItemTile({onAddToCart, ...item}) {
-  const { image, productDetail, direction, name, basePrice,
-    sizes, extraIngredientPrices,
-  } = item;
-  const hasSizesOrExtras = sizes?.length > 0 || extraIngredientPrices?.length > 0;
+export default function MenuItemTile({ menuItems, onAddToCart }) {
+  console.log("Menu Items" ,menuItems)
+  const carouselItems = menuItems?.map((item, index) => {
+    const { image, name, basePrice, productDetail, direction, sizes, extraIngredientPrices } = item;
+    return {
+      img: image,
+      content: name,
+      price: basePrice,
+    };
+  });
+  console.log(menuItems)
   return (
-    <div className="bg-gray-200 p-4 rounded-lg text-center
-      group hover:bg-white hover:shadow-md hover:shadow-black/25 transition-all">
-      {/* <div className="text-center">
-        <img src={image} className="max-h-auto max-h-24 block mx-auto" alt="Diet Products"/>
-      </div> */}
-      <h4 className="font-semibold text-xl my-3">{name}</h4>
-      <p className="text-gray-500 text-sm line-clamp-3">
-        {productDetail}
-      </p>
-      <p className="text-gray-500 text-sm line-clamp-3">
-        {direction}
-      </p>
-      <AddToCartButton
-        image={image}
-        hasSizesOrExtras={hasSizesOrExtras}
-        onClick={onAddToCart}
-        basePrice={basePrice}
-      />
+    <div>
+      <Carousel items={carouselItems} />
+
+     
     </div>
   );
 }

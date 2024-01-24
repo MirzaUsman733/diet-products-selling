@@ -79,6 +79,7 @@ const items = [
   return (
     <>
     <Carousel items={items} />
+
       <KetoHomeHeader />
       <KetoCalculatorComponents />
       <KetoCalculatorFooter />
