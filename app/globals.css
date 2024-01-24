@@ -114,43 +114,47 @@ input[type=submit]:hover {
 
 
 
-/* styles.module.css */
-
-/* styles.module.css */
-
-.carouselItem {
-  position: relative;
+.homeCertification {
+    padding-top: 50px;
+    /* min-height: 80vh; */
 }
 
-.centeredContent {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 20px;
-  text-align: center;
-}
+.homeCertificationSliderContent {
+    min-height: 70vh;
+    width: 94.5vw;
+    margin: auto;
+    cursor: pointer;
+    /* padding-top: 30px; */
 
-/* Customize navigation arrows */
-.prevArrow,
-.nextArrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: #333;
-  color: #fff;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
-}
-
-.nextArrow {
-  right: 10px;
-}
-
-.prevArrow {
-  left: 10px;
 }
 
 
+div.slick-slider .slick-dots li button:before {
+    color: #0069D9;
+}
+
+div.slick-slider .slick-prev,
+div.slick-slider .slick-next {
+    margin-top: -10px;
+    height: 97vh;
+    width: 40px;
+    border-radius: 0px;
+    background-color: rgba(0, 0, 0, 0.082);
+    color: #0069D9 !important;
+    z-index: 1;
+}
+div.slick-slider .slick-prev{
+    margin-left: 25px
+}
+div.slick-slider .slick-next{
+    margin-right: 25px;
+}
+div.slick-slider .slick-prev:hover,
+div.slick-slider .slick-next:hover {
+
+    height: 73vh;
+    width: 40px;
+    background-color: #0069D9;
+    /* background-color: ; */
+    color: #0069D9 !important;
+}
