@@ -49,7 +49,7 @@ export default function MenuItem(menuItem) {
       selectedPrice += extra.price;
     }
   }
-
+  console.log(description);
   return (
     <>
       
@@ -75,10 +75,9 @@ export default function MenuItem(menuItem) {
               <p className="text-center text-gray-500 text-sm mb-2">
                 {direction}
               </p>
-              <div
-                className="edt"
+              {/* <div
                 dangerouslySetInnerHTML={{ __html: description }}
-              />
+              /> */}
               {sizes?.length > 0 && (
                 <div className="py-2">
                   <h3 className="text-center text-gray-700">Pick your size</h3>
@@ -114,8 +113,8 @@ export default function MenuItem(menuItem) {
                 </div>
               )}
               <button
-                targetTop={'5%'}
-                targetLeft={'95%'}
+                targettop={'5%'}
+                targetleft={'95%'}
                 src={image}>
                 <div className="primary sticky bottom-2"
                      onClick={handleAddToCartButtonClick}>

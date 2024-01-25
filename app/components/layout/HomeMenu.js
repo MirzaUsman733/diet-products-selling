@@ -9,7 +9,7 @@ export default function HomeMenu() {
   useEffect(() => {
     fetch('/api/menu-items').then(res => {
       res.json().then(menuItems => {
-        setBestSellers(menuItems.slice(-3));
+        setBestSellers(menuItems.slice(-6));
       });
     });
   }, []);
@@ -21,7 +21,7 @@ export default function HomeMenu() {
           subHeader={'check out'}
           mainHeader={'Our Best Sellers'} />
       </div>
-      <div className="grid sm:grid-cols-3 gap-4">
+        <div className="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
         {bestSellers?.length > 0 && bestSellers.map(item => (
           <MenuItem key={item._id} {...item} />
         ))}
