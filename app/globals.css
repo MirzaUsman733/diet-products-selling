@@ -233,7 +233,7 @@ div.slick-slider .slick-next:hover {
 
 .carousel {
     position: relative;
-    width: 100vw;
+    width: 80%;
     max-width: 1500px;
     margin: 0 auto;
 }
@@ -289,26 +289,3 @@ div.slick-slider .slick-next:hover {
 
 
 
-
-
-
-
-
-
-
-
-
-
-/* Caorosel Gethub */
-
-
-.carouselGitHub {
-  display: inline-flex;
-  overflow-x: hidden;
-  /*  scroll snap is a great feature which will center the image on snap on touch screen devices  */
-  scroll-snap-type: x mandatory;
-  /* all below will hide the scrollbar on all browsers.    */
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none; /* For Firefox */
-  -ms-overflow-style: none; /* For Internet Explorer and Edge */
-}

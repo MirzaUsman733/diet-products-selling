@@ -29,7 +29,7 @@ export default function CartProduct({ product, onRemove }) {
       <div className="text-lg font-semibold">
         ${cartProductPrice(product)}
       </div>
-      {!!onRemove && (
+      {onRemove && (
         <div className="ml-2">
           <button
             type="button"

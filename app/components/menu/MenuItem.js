@@ -2,8 +2,10 @@ import {CartContext} from "@/app/contexts/AppContext";
 import MenuItemTile from "@/app/components/menu/MenuItemTile";
 import Image from "next/image";
 import {useContext, useState} from "react";
+
 // import FlyingButton from "react-flying-item";
 import toast from "react-hot-toast";
+import Carousel from '@/app/components/homePageComponents/CustomCarousel'
 
 export default function MenuItem(menuItem) {
   const {
@@ -20,7 +22,7 @@ export default function MenuItem(menuItem) {
   async function handleAddToCartButtonClick() {
     console.log('add to cart');
     const hasOptions = sizes.length > 0 || extraIngredientPrices.length > 0;
-    if (hasOptions && !showPopup) {
+    if (hasOptions) {
       setShowPopup(true);
       return;
     }
@@ -49,7 +51,81 @@ export default function MenuItem(menuItem) {
       selectedPrice += extra.price;
     }
   }
-  console.log(description);
+
+
+  const items = [
+    {
+      img: "https://placekitten.com/300/200",
+      content: "Item 1 Content",
+      price: 100,
+
+    },
+    {
+      img: "https://placekitten.com/301/200",
+      content: "Item 2 Content",
+      price: 100,
+
+    },
+    {
+      img: "https://placekitten.com/302/200",
+      content: "Item 3 Content",
+      price: 100,
+
+    },
+    {
+      img: "https://placekitten.com/303/200",
+      content: "Item 4 Content",
+      price: 100,
+    },
+    {
+      img: "https://placekitten.com/304/200",
+      content: "Item 5 Content",
+      price: 100,
+
+    },
+    {
+      img: "https://placekitten.com/305/200",
+      content: "Item 6 Content",
+      price: 100,
+
+    },
+    {
+      img: "https://placekitten.com/306/200",
+      content: "Item 7 Content",
+      price: 100,
+
+    },
+    {
+      img: "https://placekitten.com/307/200",
+      content: "Item 8 Content",
+      price: 100,
+
+    },
+    {
+      img: "https://placekitten.com/308/200",
+      content: "Item 9 Content",
+      price: 100,
+
+    },
+    {
+      img: "https://placekitten.com/309/200",
+      content: "Item 10 Content",
+      price: 100,
+
+    },
+    {
+      img: "https://placekitten.com/310/200",
+      content: "Item 11 Content",
+      price: 100,
+
+    },
+    // {
+    //   img: "https://placekitten.com/311/200",
+    //   content: "Item 12 Content",
+    // },
+  ];
+
+
   return (
     <>
       
@@ -59,10 +135,11 @@ export default function MenuItem(menuItem) {
           className="fixed inset-0 bg-black/80 flex items-center justify-center">
           <div
             onClick={ev => ev.stopPropagation()}
-            className="my-8 bg-white p-2 rounded-lg max-w-md">
+            className="my-8 bg-white p-2 rounded-lg max-w-4xl">
             <div
               className="overflow-y-scroll p-2"
               style={{maxHeight:'calc(100vh - 100px)'}}>
+                <Carousel items={items} />
               {/* <Image
                 src={image}
                 alt={name}
@@ -75,9 +152,9 @@ export default function MenuItem(menuItem) {
               <p className="text-center text-gray-500 text-sm mb-2">
                 {direction}
               </p>
-              {/* <div
+              <div
                 dangerouslySetInnerHTML={{ __html: description }}
-              /> */}
+              />
               {sizes?.length > 0 && (
                 <div className="py-2">
                   <h3 className="text-center text-gray-700">Pick your size</h3>

@@ -19,9 +19,9 @@ export default function MenuPage() {
       {categories?.length > 0 && categories.map(c => (
         <div key={c._id}>
           <div className="text-center mt-5">
-            {/* <SectionHeaders mainHeader={c.name} /> */}
+            <SectionHeaders mainHeader={c.name} />
           </div>
-          <div className="grid sm:grid-cols-3 gap-4 mt-6 mb-12">
+          <div className="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mt-6 mb-12">
             {menuItems.filter(item => item.category === c._id).map(item => (
               <MenuItem key={item._id} {...item} />
             ))}

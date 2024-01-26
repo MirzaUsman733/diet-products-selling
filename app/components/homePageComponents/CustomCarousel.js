@@ -5,7 +5,7 @@ import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 
 const Carousel = ({ items }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
-    const itemsPerPage = 6;
+    const itemsPerPage = 3;
 
     const nextSlide = () => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
@@ -20,7 +20,7 @@ const Carousel = ({ items }) => {
         const remainingItems = items?.slice(0, itemsPerPage - slicedItems.length) || [];
 
         return [...slicedItems, ...remainingItems].map((item, index) => (
-            <div key={index} className="w-full p-3 sm:w-1/6">
+            <div key={index} className="w-full p-3 sm:w-1/3">
                 <div className="shadow-2xl p-3">
                     <img src={item.img} alt={`Slide ${index}`} className="w-full h-auto py-5" style={{ borderRadius: "100%" }} />
                     <p className="mt-2 text-center">{item.content}</p>
