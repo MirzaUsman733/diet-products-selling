@@ -103,13 +103,17 @@ const UserDataDashboard: React.FC = () => {
         <div className="shadow-2xl bg-gray-300 shadow-slate-400 text-black p-8 bg-opacity-20 bg-zince-300/10 flex flex-col gap-2 my-6">
           <h1 className="text-4xl font-bold text-center mb-4">All Users</h1>
           <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <Table
+              sx={{ minWidth: 650, textAlign: "center" }}
+              aria-label="simple table"
+            >
               <TableHead>
                 <TableRow>
-                  <TableCell>SR.NO</TableCell>
-                  <TableCell>Name</TableCell>
-                  <TableCell>Email</TableCell>
-                  <TableCell>Role</TableCell>
+                  <TableCell className="text-center">SR.NO</TableCell>
+                  <TableCell className="text-center">Name</TableCell>
+                  <TableCell className="text-center">Email</TableCell>
+                  <TableCell className="text-center">Role</TableCell>
+                  {/* <TableCell className="text-center">Approval</TableCell> */}
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -117,20 +121,37 @@ const UserDataDashboard: React.FC = () => {
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((user: any, index: number) => (
                     <TableRow key={user._id}>
-                      <TableCell component="th" scope="row">
+                      <TableCell
+                        className="text-center"
+                        component="th"
+                        scope="row"
+                      >
                         {index + 1}
                       </TableCell>
-                      <TableCell>{user?.name}</TableCell>
-                      <TableCell>{user?.email}</TableCell>
-                      <TableCell>{user?.role}</TableCell>
-                      <TableCell>{user?.approved}</TableCell>
+                      <TableCell className="text-center">
+                        {user?.name}
+                      </TableCell>
+                      <TableCell className="text-center">
+                        {user?.email}
+                      </TableCell>
+                      <TableCell className="text-center">
+                        {user?.role}
+                      </TableCell>
+                      {/* <TableCell className="text-center">
+                        {user?.approved == true ? "True" : "False"}
+                      </TableCell> */}
                     </TableRow>
                   ))}
               </TableBody>
             </Table>
           </TableContainer>
           <TablePagination
-            rowsPerPageOptions={[5, 10, 25]}
+            rowsPerPageOptions={[
+              5,
+              10,
+              25,
+              { label: "All", value: userData.length },
+            ]}
             component="div"
             count={userData.length}
             rowsPerPage={rowsPerPage}

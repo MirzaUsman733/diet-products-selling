@@ -1,4 +1,16 @@
+"use client";
 import React, { useEffect, useState } from "react";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Button,
+  TablePagination,
+} from "@mui/material";
 
 interface User {
   _id: string;
@@ -9,6 +21,8 @@ interface User {
 
 const Approval: React.FC = () => {
   const [unapprovedUsers, setUnapprovedUsers] = useState<User[]>([]);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
 
   useEffect(() => {
     fetchUnapprovedUsers();
@@ -48,71 +62,78 @@ const Approval: React.FC = () => {
     }
   };
 
+  const handleChangePage = (event: unknown, newPage: number) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+
   return (
     <div>
-      <div className="mt-10 ms-32 bg-gray-300 bg-opacity-20 p-8 shadow-2xl">
+      <div className="shadow-2xl bg-gray-300 shadow-slate-400 text-black p-8 bg-opacity-20 bg-zince-300/10 flex flex-col gap-2 my-6 mt-8">
         <h2 className="text-center text-4xl font-bold mb-16">
           Unapproved Users
         </h2>
-        <table className="min-w-full divide-y divide-gray-200 text-center mt-20 ">
-          <thead>
-            <tr>
-              <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                SR.NO
-              </th>
-              <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Name
-              </th>
-              <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Email
-              </th>
-              <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Role
-              </th>
-              <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Approval
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {unapprovedUsers.map((user, index) => (
-              <tr key={user._id}>
-                <td className="px-5 py-4 whitespace-nowrap">
-                  <div className="text-sm font-medium text-gray-900">
-                    {index + 1}
-                  </div>
-                </td>
-                <td className="px-5 py-4 whitespace-nowrap">
-                  <div className="text-sm font-medium text-gray-900">
-                    {user?.name}
-                  </div>
-                </td>
-                <td className="px-5 py-4 whitespace-nowrap">
-                  <div className="text-sm font-medium text-gray-900">
-                    {user?.email}
-                  </div>
-                </td>
-                <td className="px-5 py-4 whitespace-nowrap">
-                  <div className="text-sm font-medium text-gray-900">
-                    {user?.role}
-                  </div>
-                </td>
-                <td className="px-5 py-4 whitespace-nowrap">
-                  <div className="text-sm font-medium text-gray-900">
-                    <button
-                      className="py-3 px-5 bg-blue-800 text-white rounded-full text-center"
-                      onClick={() => {
-                        approveUser(user._id);
-                      }}
+        <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell className="text-center">SR.NO</TableCell>
+                <TableCell className="text-center">Name</TableCell>
+                <TableCell className="text-center">Email</TableCell>
+                <TableCell className="text-center">Role</TableCell>
+                <TableCell className="text-center">Approval</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {unapprovedUsers
+                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                .map((user, index) => (
+                  <TableRow key={user._id}>
+                    <TableCell
+                      className="text-center"
+                      component="th"
+                      scope="row"
                     >
-                      Approve User
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+                      {index + 1}
+                    </TableCell>
+                    <TableCell className="text-center">{user.name}</TableCell>
+                    <TableCell className="text-center">{user.email}</TableCell>
+                    <TableCell className="text-center">{user.role}</TableCell>
+
+                    <TableCell
+                      sx={{ display: "flex", justifyContent: "center" }}
+                    >
+                      <Button
+                        variant="outlined"
+                        // style={{}}
+                        className="text-center m-auto"
+                        onClick={() => {
+                          approveUser(user._id);
+                        }}
+                      >
+                        Approve User
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <TablePagination
+          rowsPerPageOptions={[5, 10, 25]}
+          component="div"
+          count={unapprovedUsers.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
       </div>
     </div>
   );
