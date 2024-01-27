@@ -12,7 +12,7 @@ export default function MenuItemTile({ onAddToCart, ...item }) {
     <div className="p-4 md:p-2 w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:shadow-md hover:shadow-black/25 transition-all">
       <div className="">
         <Link href="#">
-          <img className="p-8 md: rounded-t-lg" src="https://placekitten.com/300/200" alt="product image" />
+          <img className="p-4  rounded-t-lg" src="https://placekitten.com/300/200" alt="product image" />
         </Link>
         <div className="px-5 pb-5">
           <Link href="#">
@@ -29,7 +29,7 @@ export default function MenuItemTile({ onAddToCart, ...item }) {
             <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">5.0</span>
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-3xl font-bold text-gray-900 dark:text-white">${basePrice}</span>
+            <span className="text-3xl mt-5 font-bold text-gray-900 dark:text-white">${basePrice}</span>
             <AddToCartButton
               image={image}
               hasSizesOrExtras={hasSizesOrExtras}
