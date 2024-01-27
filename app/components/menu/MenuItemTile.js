@@ -9,8 +9,7 @@ export default function MenuItemTile({ onAddToCart, ...item }) {
   } = item;
   const hasSizesOrExtras = sizes?.length > 0 || extraIngredientPrices?.length > 0;
   return (
-    <div className="p-4 md:p-2 w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:shadow-md hover:shadow-black/25 transition-all
-       ">
+    <div className="p-4 md:p-2 w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:shadow-md hover:shadow-black/25 transition-all">
       <div className="">
         <Link href="#">
           <img className="p-8 md: rounded-t-lg" src="https://placekitten.com/300/200" alt="product image" />
@@ -19,7 +18,6 @@ export default function MenuItemTile({ onAddToCart, ...item }) {
           <Link href="#">
             <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{name}</h5>
           </Link>
-          {/* <p>{productDetail}</p> */}
           <div className="flex items-center mt-2.5 mb-5">
             <div className="flex items-center space-x-1 rtl:space-x-reverse">
               <FaStar className="w-4 h-4 text-yellow-300" />

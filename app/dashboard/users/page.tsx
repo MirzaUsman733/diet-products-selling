@@ -1,8 +1,8 @@
-"use client"
+"use client";
 import React from "react";
-import { redirect } from "next/navigation";
 import { useUser } from "@/app/contexts/userData";
 import UserDataDashboard from "@/app/components/UserDataDashboard";
+import { Container } from "@mui/material";
 
 const Dashboard: React.FC = () => {
   const { userWithEmail } = useUser();
@@ -19,13 +19,11 @@ const Dashboard: React.FC = () => {
   //   userEmail !== null &&
   //   userWithEmail?.role === "admin"
   // ) {
-    return (
-      <div className="flex min-h-screen flex-col items-center justify-between max-w-screen-2xl">
-        <div>
-          <UserDataDashboard />
-        </div>
-      </div>
-    );
+  return (
+    <Container className="mt-20">
+      <UserDataDashboard />
+    </Container>
+  );
   // } else {
   //   redirect("/frontend");
   //   return null;
