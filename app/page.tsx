@@ -2,6 +2,7 @@ import KetoHomeHeader from './components/KetoHomeHeader';
 import KetoCalculatorComponents from './components/KetoCalculatorComponents';
 import KetoCalculatorFooter from './components/KetoCalculatorFooter';
 import Carousel from '@/app/components/homePageComponents/CustomCarousel'
+import ProductCard from '@/app/components/ProductCard'
 
 export default function Home() {
 const items = [
@@ -70,14 +71,16 @@ const items = [
     price: 100,
 
   },
-  // {
-  //   img: "https://placekitten.com/311/200",
-  //   content: "Item 12 Content",
-  // },
+  {
+    img: "https://placekitten.com/311/200",
+    content: "Item 12 Content",
+  },
   // Add more items as needed
 ];
   return (
     <>
+      <ProductCard />
+
     <Carousel items={items} />
 
       <KetoHomeHeader />

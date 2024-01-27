@@ -17,6 +17,7 @@ export default function page() {
   return (
     <>
       {/* <Hero /> */}
+      
        <Carousel />
       <HomeMenu />
       <section className="text-center my-16" id="about">
