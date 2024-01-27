@@ -39,7 +39,6 @@ const Approval: React.FC = () => {
       console.log("Response status:", response.status);
 
       if (response.ok) {
-        // Fetch unapproved users after approval
         fetchUnapprovedUsers();
       } else {
         console.error("Failed to approve user");
