@@ -78,7 +78,13 @@ div.slick-slider .slick-next:hover {
 
 
 
+div.tabs>* {
+    @apply bg-gray-300 text-gray-700 rounded-full py-2 px-4;
+}
 
+div.tabs>*.active {
+    @apply bg-blue-500 text-white;
+}
 
 
 

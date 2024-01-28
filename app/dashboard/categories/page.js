@@ -4,7 +4,7 @@ import UserTabs from "@/app/components/layout/UserTabs";
 import { useEffect, useState } from "react";
 import { useProfile } from "@/app/components/UseProfile";
 import toast from "react-hot-toast";
-
+import TextField from '@mui/material/TextField';
 export default function CategoriesPage() {
 
   const [categoryName, setCategoryName] = useState('');
@@ -78,29 +78,27 @@ export default function CategoriesPage() {
     return 'Loading user info...';
   }
 
-  // if (!profileData.admin) {
-  //   return 'Not an admin';
-  // }
-
   return (
     <section className="mt-8 max-w-2xl mx-auto">
       <UserTabs isAdmin={true} />
       <form className="mt-8" onSubmit={handleCategorySubmit}>
-        <div className="flex gap-2 items-end">
-          <div className="grow">
-            <label>
+        <div className="flex flex-col md:flex-row md:items-end gap-2">
+          <div className="flex-grow">
+            <label className="block text-xl font-bold mb-2">
               {editedCategory ? 'Update category' : 'New category name'}
               {editedCategory && (
                 <>: <b>{editedCategory.name}</b></>
               )}
             </label>
-            <input type="text"
+            <input
+              type="text"
               value={categoryName}
               onChange={ev => setCategoryName(ev.target.value)}
+              className="block py-2 w-full rounded-md border border-gray-300 shadow-sm focus:cursor-text ps-2"
             />
           </div>
-          <div className="pb-2 flex gap-2">
-            <button className="border border-primary bg-blue-500" type="submit">
+          <div className="flex gap-2 items-center"> {/* Adjusted alignment */}
+            <button className="border border-primary bg-blue-500 px-4 py-2 text-white rounded-md hover:bg-blue-600" type="submit">
               {editedCategory ? 'Update' : 'Create'}
             </button>
             <button
@@ -108,7 +106,9 @@ export default function CategoriesPage() {
               onClick={() => {
                 setEditedCategory(null);
                 setCategoryName('');
-              }}>
+              }}
+              className="border rounded-md px-4 py-2 bg-gray-200 hover:bg-gray-300"
+            >
               Cancel
             </button>
           </div>
@@ -119,16 +119,16 @@ export default function CategoriesPage() {
         {categories?.length > 0 && categories.map(c => (
           <div
             key={c._id}
-            className="bg-gray-100 rounded-xl p-2 px-4 flex gap-1 mb-1 items-center">
-            <div className="grow">
-              {c.name}
-            </div>
+            className="bg-gray-100 rounded-xl p-2 px-4 flex justify-between items-center mb-1">
+            <span className="flex-grow">{c.name}</span>
             <div className="flex gap-1">
-              <button type="button"
+              <button
+                type="button"
                 onClick={() => {
                   setEditedCategory(c);
                   setCategoryName(c.name);
                 }}
+                className="border rounded-md px-3 py-1 bg-blue-500 text-white hover:bg-blue-600"
               >
                 Edit
               </button>
@@ -140,5 +140,6 @@ export default function CategoriesPage() {
         ))}
       </div>
     </section>
+
   );
 }
