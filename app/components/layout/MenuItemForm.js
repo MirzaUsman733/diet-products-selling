@@ -5,29 +5,40 @@ import MenuItemPriceProps from "@/app/components/layout/MenuItemPriceProps";
 import { useEffect, useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 export default function MenuItemForm({ onSubmit, menuItem }) {
-  const [image, setImage] = useState(menuItem?.image || '');
-  const [name, setName] = useState(menuItem?.name || '');
-  const [productDetail, setproductDetail] = useState(menuItem?.productDetail || '');
-  const [direction, setDirection] = useState(menuItem?.direction || '');
-  const [basePrice, setBasePrice] = useState(menuItem?.basePrice || '');
-  const [sizes, setSizes] = useState(menuItem?.sizes || []);
-  const [category, setCategory] = useState(menuItem?.category || '');
-  const [description, setDescription] = useState(menuItem?.editorContent || '');
+  const [image, setImage] = useState('');
+  const [name, setName] = useState('');
+  const [productDetail, setProductDetail] = useState('');
+  const [direction, setDirection] = useState('');
+  const [basePrice, setBasePrice] = useState('');
+  const [sizes, setSizes] = useState([]);
+  const [category, setCategory] = useState('');
+  const [description, setDescription] = useState('');
   const [categories, setCategories] = useState([]);
-  const [
-    extraIngredientPrices,
-    setExtraIngredientPrices,
-  ] = useState(menuItem?.extraIngredientPrices || []);
+  const [extraIngredientPrices, setExtraIngredientPrices] = useState([]);
 
+  const fetchCategories = () => {
+    fetch('/api/categories')
+      .then(res => res.json())
+      .then(categories => setCategories(categories))
+      .catch(error => console.error("Error fetching categories:", error));
+  };
   useEffect(() => {
-    fetch('/api/categories').then(res => {
-      res.json().then(categories => {
-        setCategories(categories);
-      });
-    });
-  }, []);
-  console.log("Base 64 Image", image)
-  console.log(menuItem)
+    if (menuItem) {
+      setImage(menuItem.image || '');
+      setName(menuItem.name || '');
+      setProductDetail(menuItem.productDetail || '');
+      setDirection(menuItem.direction || '');
+      setBasePrice(menuItem.basePrice || '');
+      setSizes(menuItem.sizes || []);
+      setCategory(menuItem.category || '');
+      setDescription(menuItem.description || '');
+      setExtraIngredientPrices(menuItem.extraIngredientPrices || []);
+    }
+  }, [menuItem]);
+  useEffect(() => {
+    fetchCategories();
+  }, [menuItem]);
+  console.log("Menu Item", menuItem?.image);
   return (
     <form
       onSubmit={ev =>
@@ -53,7 +64,7 @@ export default function MenuItemForm({ onSubmit, menuItem }) {
           <input
             type="text"
             value={productDetail}
-            onChange={ev => setproductDetail(ev.target.value)}
+            onChange={ev => setProductDetail(ev.target.value)}
             className="mt-1 p-2 border border-gray-300 rounded-md w-full"
           />
           <label className="block text-sm font-medium text-gray-700">Direction</label>
