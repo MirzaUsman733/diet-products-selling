@@ -26,13 +26,13 @@ export default function MenuItemForm({ onSubmit, menuItem }) {
       });
     });
   }, []);
-
+  console.log("Base 64 Image", image)
   return (
     <form
       onSubmit={ev =>
         onSubmit(ev, {
-          name, productDetail, direction, basePrice, sizes, extraIngredientPrices, category, description
-        }, console.log(description))
+          name, image, productDetail, direction, basePrice, sizes, extraIngredientPrices, category, description
+        }, console.log(description, image))
       }
       className="mt-8 max-w-2xl mx-auto"
     >
