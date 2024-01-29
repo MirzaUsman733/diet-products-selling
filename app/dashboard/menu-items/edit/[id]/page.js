@@ -4,19 +4,19 @@ import Left from "@/app/components/icons/Left";
 import EditableImage from "@/app/components/layout/EditableImage";
 import MenuItemForm from "@/app/components/layout/MenuItemForm";
 import UserTabs from "@/app/components/layout/UserTabs";
-import {useProfile} from "@/app/components/UseProfile";
+import { useProfile } from "@/app/components/UseProfile";
 import Link from "next/link";
-import {redirect, useParams} from "next/navigation";
-import {useEffect, useState} from "react";
+import { redirect, useParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 export default function EditMenuItemPage() {
 
-  const {id} = useParams();
+  const { id } = useParams();
 
   const [menuItem, setMenuItem] = useState(null);
   const [redirectToItems, setRedirectToItems] = useState(false);
-  const {loading, data} = useProfile();
+  const { loading, data } = useProfile();
 
   useEffect(() => {
     fetch('/api/menu-items').then(res => {
@@ -26,10 +26,10 @@ export default function EditMenuItemPage() {
       });
     })
   }, []);
-
+  console.log(menuItem)
   async function handleFormSubmit(ev, data) {
     ev.preventDefault();
-    data = {...data, _id:id};
+    data = { ...data, _id: id };
     const savingPromise = new Promise(async (resolve, reject) => {
       const response = await fetch('/api/menu-items', {
         method: 'PUT',
@@ -50,10 +50,10 @@ export default function EditMenuItemPage() {
 
     setRedirectToItems(true);
   }
-
+  console.log(data)
   async function handleDeleteClick() {
     const promise = new Promise(async (resolve, reject) => {
-      const res = await fetch('/api/menu-items?_id='+id, {
+      const res = await fetch('/api/menu-items?_id=' + id, {
         method: 'DELETE',
       });
       if (res.ok)

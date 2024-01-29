@@ -27,6 +27,7 @@ export default function MenuItemForm({ onSubmit, menuItem }) {
     });
   }, []);
   console.log("Base 64 Image", image)
+  console.log(menuItem)
   return (
     <form
       onSubmit={ev =>

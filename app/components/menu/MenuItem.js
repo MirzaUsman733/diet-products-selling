@@ -1,7 +1,7 @@
-import {CartContext} from "@/app/contexts/AppContext";
+import { CartContext } from "@/app/contexts/AppContext";
 import MenuItemTile from "@/app/components/menu/MenuItemTile";
 import Image from "next/image";
-import {useContext, useState} from "react";
+import { useContext, useState } from "react";
 
 // import FlyingButton from "react-flying-item";
 import toast from "react-hot-toast";
@@ -9,7 +9,7 @@ import Carousel from '@/app/components/homePageComponents/CustomCarousel'
 
 export default function MenuItem(menuItem) {
   const {
-    image, name, productDetail, direction ,basePrice,
+    image, name, productDetail, direction, basePrice,
     sizes, extraIngredientPrices, description,
   } = menuItem;
   const [
@@ -17,7 +17,7 @@ export default function MenuItem(menuItem) {
   ] = useState(sizes?.[0] || null);
   const [selectedExtras, setSelectedExtras] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
-  const {addToCart} = useContext(CartContext);
+  const { addToCart } = useContext(CartContext);
 
   async function handleAddToCartButtonClick() {
     console.log('add to cart');
@@ -128,7 +128,7 @@ export default function MenuItem(menuItem) {
 
   return (
     <>
-      
+
       {showPopup && (
         <div
           onClick={() => setShowPopup(false)}
@@ -138,13 +138,13 @@ export default function MenuItem(menuItem) {
             className="my-8 bg-white p-2 rounded-lg max-w-4xl">
             <div
               className="overflow-y-scroll p-2"
-              style={{maxHeight:'calc(100vh - 100px)'}}>
-                <Carousel items={items} />
-              {/* <Image
+              style={{ maxHeight: 'calc(100vh - 100px)' }}>
+              {/* <Carousel items={items} /> */}
+              <Image
                 src={image}
                 alt={name}
                 width={300} height={200}
-                className="mx-auto" /> */}
+                className="mx-auto" />
               <h2 className="text-lg font-bold text-center mb-2">{name}</h2>
               <p className="text-center text-gray-500 text-sm mb-2">
                 {productDetail}
@@ -166,7 +166,7 @@ export default function MenuItem(menuItem) {
                         type="radio"
                         onChange={() => setSelectedSize(size)}
                         checked={selectedSize?.name === size.name}
-                        name="size"/>
+                        name="size" />
                       {size.name} ${basePrice + size.price}
                     </label>
                   ))}
@@ -194,7 +194,7 @@ export default function MenuItem(menuItem) {
                 targetleft={'95%'}
                 src={image}>
                 <div className="primary sticky bottom-2"
-                     onClick={handleAddToCartButtonClick}>
+                  onClick={handleAddToCartButtonClick}>
                   Add to cart ${selectedPrice}
                 </div>
               </button>

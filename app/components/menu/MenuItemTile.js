@@ -12,7 +12,7 @@ export default function MenuItemTile({ onAddToCart, ...item }) {
     <div className="p-4 md:p-2 w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:shadow-md hover:shadow-black/25 transition-all">
       <div className="">
         <Link href="#">
-          <img className="p-4  rounded-t-lg" src="https://placekitten.com/300/200" alt="product image" />
+          <img className="p-4  rounded-t-lg" src={image} alt="product image" />
         </Link>
         <div className="px-5 pb-5">
           <Link href="#">
