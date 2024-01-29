@@ -11,6 +11,7 @@ const Login = () => {
   const { data: session, status: sessionStatus } = useSession();
   useEffect(() => {
     if (sessionStatus === "authenticated") {
+      console.log(sessionStatus);
       router.replace("/");
     }
   }, [sessionStatus]);

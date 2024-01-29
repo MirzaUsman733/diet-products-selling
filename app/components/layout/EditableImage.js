@@ -1,38 +1,52 @@
-import Image from "next/image";
-import toast from "react-hot-toast";
+import React from 'react';
+import toast from 'react-hot-toast';
 
-export default function EditableImage({link, setLink}) {
-
+export default function EditableImage({ link, setLink }) {
   async function handleFileChange(ev) {
     const files = ev.target.files;
     if (files?.length === 1) {
-      const data = new FormData;
-      data.set('file', files[0]);
+      const file = files[0];
 
-      const uploadPromise = fetch('/api/upload', {
-        method: 'POST',
-        body: data,
-      }).then(response => {
-        if (response.ok) {
-          return response.json().then(link => {
-            setLink(link);
-          })
+      // convert the file to a base64 string
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+
+      reader.onload = async function () {
+        const base64String = reader.result.split(',')[1];
+
+        try {
+          const response = await fetch('/api/upload', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ data: base64String })
+          });
+
+          if (response.ok) {
+            const responseData = await response.json();
+            setLink(responseData.link);
+            toast.success('Upload complete');
+          } else {
+            throw new Error('Upload failed');
+          }
+        } catch (error) {
+          console.error('Error uploading image:', error);
+          toast.error('Upload error');
         }
-        throw new Error('Something went wrong');
-      });
+      };
 
-      await toast.promise(uploadPromise, {
-        loading: 'Uploading...',
-        success: 'Upload complete',
-        error: 'Upload error',
-      });
+      reader.onerror = function (error) {
+        console.error('Error reading file:', error);
+        toast.error('Error reading file');
+      };
     }
   }
 
   return (
     <>
       {link && (
-        <Image className="rounded-lg w-full h-full mb-1" src={link} width={250} height={250} alt={'avatar'} />
+        <img className="rounded-lg w-full h-full mb-1" src={link} width={250} height={250} alt="avatar" />
       )}
       {!link && (
         <div className="text-center bg-gray-200 p-4 text-gray-500 rounded-lg mb-1">

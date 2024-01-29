@@ -1,4 +1,3 @@
-'use client';
 import AddressInputs from "@/app/components/layout/AddressInputs";
 import EditableImage from "@/app/components/layout/EditableImage";
 import { useProfile } from "@/app/components/UseProfile";
@@ -40,12 +39,14 @@ export default function UserForm({ user, onSave }) {
         }
       >
         <label className="block text-sm font-medium text-gray-700">
-          First and last name
+          Name
         </label>
         <input
-          type="text" placeholder="First and last name"
-          value={userName} onChange={ev => setUserName(ev.target.value)}
-          className="mt-1 p-2 border border-gray-300 rounded-md w-full"
+          type="text"
+          placeholder="First and last name"
+          value={userName}
+          onChange={ev => setUserName(ev.target.value)}
+          className="block w-full mt-1 mb-2 rounded-xl border p-2 border-gray-300 bg-gray-100"
         />
         <label className="block text-sm font-medium text-gray-700">Email</label>
         <input
@@ -53,7 +54,7 @@ export default function UserForm({ user, onSave }) {
           disabled={true}
           value={user.email}
           placeholder={'email'}
-          className="mt-1 p-2 border border-gray-300 rounded-md w-full"
+          className="block w-full mt-1 mb-2 rounded-xl border p-2 border-gray-300 bg-gray-300 cursor-not-allowed text-gray-500"
         />
         <AddressInputs
           addressProps={{ phone, streetAddress, postalCode, city, country }}
@@ -63,7 +64,9 @@ export default function UserForm({ user, onSave }) {
           <div>
             <label className="p-2 inline-flex items-center gap-2 mb-2" htmlFor="adminCb">
               <input
-                id="adminCb" type="checkbox" className="form-checkbox"
+                id="adminCb"
+                type="checkbox"
+                className="form-checkbox"
                 checked={admin}
                 onChange={ev => setAdmin(ev.target.checked)}
               />
@@ -71,7 +74,9 @@ export default function UserForm({ user, onSave }) {
             </label>
           </div>
         )}
-        <button type="submit" className="bg-blue-500 text-white p-2 rounded-md">Save</button>
+        <button type="submit" className="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600 w-full mt-5">
+          Save
+        </button>
       </form>
     </div>
   );

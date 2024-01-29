@@ -1,41 +1,57 @@
-export default function AddressInputs({addressProps,setAddressProp,disabled=false}) {
-  const {phone, streetAddress, postalCode, city, country} = addressProps;
+export default function AddressInputs({ addressProps, setAddressProp, disabled = false }) {
+  const { phone, streetAddress, postalCode, city, country } = addressProps;
   return (
     <>
-      <label>Phone</label>
+      <label className="block mt-2 text-sm font-medium text-gray-700">Phone</label>
       <input
         disabled={disabled}
-        type="tel" placeholder="Phone number"
-        value={phone || ''} onChange={ev => setAddressProp('phone', ev.target.value)} />
-      <label>Street address</label>
+        type="tel"
+        placeholder="Phone number"
+        value={phone || ''}
+        onChange={(ev) => setAddressProp('phone', ev.target.value)}
+        className="mt-1 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:border-blue-500"
+      />
+      <label className="block mt-2 text-sm font-medium text-gray-700">Street address</label>
       <input
         disabled={disabled}
-        type="text" placeholder="Street address"
-        value={streetAddress || ''} onChange={ev => setAddressProp('streetAddress', ev.target.value)}
+        type="text"
+        placeholder="Street address"
+        value={streetAddress || ''}
+        onChange={(ev) => setAddressProp('streetAddress', ev.target.value)}
+        className="mt-1 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:border-blue-500"
       />
       <div className="grid grid-cols-2 gap-2">
         <div>
-          <label>Postal code</label>
+          <label className="block mt-2 text-sm font-medium text-gray-700">Postal code</label>
           <input
             disabled={disabled}
-            type="text" placeholder="Postal code"
-            value={postalCode || ''} onChange={ev => setAddressProp('postalCode', ev.target.value)}
+            type="text"
+            placeholder="Postal code"
+            value={postalCode || ''}
+            onChange={(ev) => setAddressProp('postalCode', ev.target.value)}
+            className="mt-1 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:border-blue-500"
           />
         </div>
         <div>
-          <label>City</label>
+          <label className="block mt-2 text-sm font-medium text-gray-700">City</label>
           <input
             disabled={disabled}
-            type="text" placeholder="City"
-            value={city || ''} onChange={ev => setAddressProp('city', ev.target.value)}
+            type="text"
+            placeholder="City"
+            value={city || ''}
+            onChange={(ev) => setAddressProp('city', ev.target.value)}
+            className="mt-1 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:border-blue-500"
           />
         </div>
       </div>
-      <label>Country</label>
+      <label className="block mt-2 text-sm font-medium text-gray-700">Country</label>
       <input
         disabled={disabled}
-        type="text" placeholder="Country"
-        value={country || ''} onChange={ev => setAddressProp('country', ev.target.value)}
+        type="text"
+        placeholder="Country"
+        value={country || ''}
+        onChange={(ev) => setAddressProp('country', ev.target.value)}
+        className="mt-1 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:border-blue-500"
       />
     </>
   );

@@ -1,32 +1,40 @@
-// pages/api/upload.js
+// Import necessary modules
+import { NextResponse } from 'next/server';
+import { v2 as cloudinary } from 'cloudinary';
+import { uuid } from 'uuidv4';
 
-import Ftp from 'ftp';
-import fs from 'fs';
+// Set up Cloudinary
+cloudinary.config({
+  // cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  // api_key: process.env.CLOUDINARY_API_KEY,
+  // api_secret: process.env.CLOUDINARY_API_SECRET,
+  cloud_name: 'dgrsjmjnv',
+  api_key: '642534992977954',
+  api_secret: "cMsPC_qW4_lLFOONVjDCqftE0m4",
+});
 
-export default (req, res) => {
-  const ftp = new Ftp();
+export async function POST(request) {
+  const { data } = await request.json(); // Parse JSON data
+  console.log(data);
+  if (!data) {
+    return new NextResponse('No data provided', { status: 400 });
+  }
 
-  ftp.connect({
-    host: 'premium58.web-hosting.com',
-    port: 21,
-    user: 'usman@img.slickstarter.com',
-    password: 'JCvqbQ+3{6Rz'
+  const base64Data = data.split(',')[1];
+  const buffer = Buffer.from(base64Data, 'base64');
+
+  const uniqueFilename = `${uuid()}-${Date.now()}.png`;
+  const response = await cloudinary.uploader.upload(buffer, {
+    public_id: uniqueFilename,
+    format: 'png',
   });
 
-  ftp.on('ready', () => {
-    const stream = ftp.createWriteStream('/1/file.txt');
-
-    stream.on('finish', () => {
-      ftp.end();
-      res.status(200).json({ message: 'File uploaded successfully.' });
+  if (response.secure_url) {
+    return new NextResponse(JSON.stringify({ link: response.secure_url }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
     });
-
-    fs.createReadStream('/1/file.txt').pipe(stream);
-  });
-
-  ftp.on('error', (err) => {
-    console.error(err);
-    ftp.end();
-    res.status(500).json({ message: 'Error uploading file.' });
-  });
-};
+  } else {
+    return new NextResponse('Error uploading image', { status: 500 });
+  }
+}

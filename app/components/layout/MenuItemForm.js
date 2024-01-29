@@ -5,7 +5,7 @@ import MenuItemPriceProps from "@/app/components/layout/MenuItemPriceProps";
 import { useEffect, useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 export default function MenuItemForm({ onSubmit, menuItem }) {
-  // const [image, setImage] = useState(menuItem?.image || '');
+  const [image, setImage] = useState(menuItem?.image || '');
   const [name, setName] = useState(menuItem?.name || '');
   const [productDetail, setproductDetail] = useState(menuItem?.productDetail || '');
   const [direction, setDirection] = useState(menuItem?.direction || '');
@@ -30,14 +30,15 @@ export default function MenuItemForm({ onSubmit, menuItem }) {
   return (
     <form
       onSubmit={ev =>
-        onSubmit(ev, { name, productDetail, direction, basePrice, sizes, extraIngredientPrices, category,description
-        },console.log(description))
+        onSubmit(ev, {
+          name, productDetail, direction, basePrice, sizes, extraIngredientPrices, category, description
+        }, console.log(description))
       }
       className="mt-8 max-w-2xl mx-auto"
     >
       <div className="md:grid items-start gap-4 grid-cols-[1fr,3fr]">
         <div>
-          {/* <EditableImage link={image} setLink={setImage} /> */}
+          <EditableImage link={image} setLink={setImage} />
         </div>
         <div className="flex-grow">
           <label className="block text-sm font-medium text-gray-700">Item name</label>
@@ -61,7 +62,7 @@ export default function MenuItemForm({ onSubmit, menuItem }) {
             onChange={ev => setDirection(ev.target.value)}
             className="mt-1 p-2 border border-gray-300 rounded-md w-full"
           />
-          
+
           <label className="block text-sm font-medium text-gray-700">Category</label>
           <select
             value={category}
@@ -87,7 +88,7 @@ export default function MenuItemForm({ onSubmit, menuItem }) {
             addLabel={'Add ingredients prices'}
             props={extraIngredientPrices}
             setProps={setExtraIngredientPrices} />
-            <label className="block text-sm font-medium text-gray-700">Description</label>
+          <label className="block text-sm font-medium text-gray-700">Description</label>
           <Editor
             apiKey="0ww6aa6ikkaan6ba6quxckauho9cnonhzczagghofh5md40x"
             initialValue={menuItem?.description || ''}
