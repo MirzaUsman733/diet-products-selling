@@ -1,18 +1,5 @@
-// import {isAdmin} from "@/app/api/auth/[...nextauth]/route";
 import {Category} from "@/app/models/Category";
 import mongoose from "mongoose";
-// export async function POST(req) {
-//   mongoose.connect(process.env.MONGO_URL);
-//   const {name} = await req.json();
-//   const isAdmin = true;
-//   if (isAdmin) {
-//     const categoryDoc = await Category.create({name});
-//     return Response.json(categoryDoc);
-//   } else {
-//     return Response.json({});
-//   }
-// }
-
 
 export async function POST(req) {
   mongoose.connect(process.env.MONGO_URL);
@@ -25,7 +12,6 @@ export async function POST(req) {
       return Response.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    // Check if the category name already exists
     const existingCategory = await Category.findOne({ name });
 
     if (existingCategory) {

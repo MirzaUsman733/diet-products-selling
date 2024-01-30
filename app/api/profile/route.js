@@ -1,26 +1,26 @@
-import {authOptions} from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import User from "@/app/models/User";
-import {UserInfo} from "@/app/models/UserInfo";
+import { UserInfo } from "@/app/models/UserInfo";
 import mongoose from "mongoose";
-import {getServerSession} from "next-auth";
+import { getServerSession } from "next-auth";
 
 export async function PUT(req) {
   mongoose.connect(process.env.MONGO_URL);
   const data = await req.json();
-  const {_id, name,email, ...otherUserInfo} = data;
+  const { _id, name, email, ...otherUserInfo } = data;
 
   let filter = {};
   if (_id) {
-    filter = {_id};
+    filter = { _id };
   } else {
     const session = await getServerSession(authOptions);
     const email = session.user.email;
-    filter = {email};
+    filter = { email };
   }
 
   const user = await User.findOne(filter);
-  await User.updateOne(filter, {name});
-  await UserInfo.findOneAndUpdate({email:user.email}, otherUserInfo, {upsert:true});
+  await User.updateOne(filter, { name });
+  await UserInfo.findOneAndUpdate({ email: user.email }, otherUserInfo, { upsert: true });
 
   return Response.json(true);
 }

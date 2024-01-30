@@ -17,10 +17,7 @@ export const GET = async (request: any) => {
 
 export const PUT = async (request: any) => {
   const { userId } = await request.json();
-
   await connect();
-
-
   try {
     const user = await User.findById(userId);
     if (user) {
