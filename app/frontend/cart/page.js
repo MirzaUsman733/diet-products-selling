@@ -83,7 +83,7 @@ export default function CartPage() {
   }
 
   return (
-    <section className="mt-8">
+    <section className="max-w-md sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-7xl mx-auto mt-8">
       <div className="text-center">
         <SectionHeaders mainHeader="Cart" />
       </div>
