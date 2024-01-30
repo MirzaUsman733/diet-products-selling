@@ -1,15 +1,15 @@
 'use client';
 import SectionHeaders from "@/app/components/layout/SectionHeaders";
 import UserTabs from "@/app/components/layout/UserTabs";
-import {useProfile} from "@/app/components/UseProfile";
-import {dbTimeForHuman} from "@/app/libs/datetime";
+import { useProfile } from "@/app/components/UseProfile";
+import { dbTimeForHuman } from "@/app/libs/datetime";
 import Link from "next/link";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
 export default function OrdersPage() {
   const [orders, setOrders] = useState([]);
   const [loadingOrders, setLoadingOrders] = useState(true);
-  const {loading, data:profile} = useProfile();
+  const { loading, data: profile } = useProfile();
 
   useEffect(() => {
     fetchOrders();
@@ -24,7 +24,7 @@ export default function OrdersPage() {
       })
     })
   }
-console.log("Orders",orders)
+  console.log("Orders", orders)
   return (
     <section className="mt-8 max-w-2xl mx-auto">
       <UserTabs />
@@ -55,8 +55,8 @@ console.log("Orders",orders)
                 </div>
               </div>
             </div>
-            <div className="justify-end flex gap-2 items-center whitespace-nowrap">
-              <Link href={"/dashboard/orders/"+order._id} className="button">
+            <div className="justify-end flex gap-2 items-center whitespace-nowrap bg-blue-500 text-white p-3 rounded-md">
+              <Link href={"/dashboard/orders/" + order._id} className="button">
                 Show order
               </Link>
             </div>

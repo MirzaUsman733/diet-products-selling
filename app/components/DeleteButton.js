@@ -1,4 +1,4 @@
-// Remove "use client" as it is not necessary in React components
+'use client'
 import { useState } from "react";
 
 export default function DeleteButton({ label, onDelete }) {

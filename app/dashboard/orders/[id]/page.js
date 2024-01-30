@@ -1,15 +1,15 @@
 'use client';
-import {CartContext, cartProductPrice} from "@/app/contexts/AppContext";
+import { CartContext, cartProductPrice } from "@/app/contexts/AppContext";
 import AddressInputs from "@/app/components/layout/AddressInputs";
 import SectionHeaders from "@/app/components/layout/SectionHeaders";
 import CartProduct from "@/app/components/menu/CartProduct";
-import {useParams} from "next/navigation";
-import {useContext, useEffect, useState} from "react";
+import { useParams } from "next/navigation";
+import { useContext, useEffect, useState } from "react";
 
 export default function page() {
-  const {id} = useParams();
+  const { id } = useParams();
   console.log(id)
-  const {clearCart} = useContext(CartContext);
+  const { clearCart } = useContext(CartContext);
   const [order, setOrder] = useState();
   const [loadingOrder, setLoadingOrder] = useState(true);
   useEffect(() => {
@@ -20,7 +20,7 @@ export default function page() {
     }
     if (id) {
       setLoadingOrder(true);
-      fetch('/api/orders?_id='+id).then(res => {
+      fetch('/api/orders?_id=' + id).then(res => {
         res.json().then(orderData => {
           setOrder(orderData);
           setLoadingOrder(false);
@@ -37,7 +37,7 @@ export default function page() {
   }
 
   return (
-    <section className="max-w-2xl mx-auto mt-8">
+    <section className="max-w-md sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-7xl mx-auto mt-8">
       <div className="text-center">
         <SectionHeaders mainHeader="Your order" />
         <div className="mt-4 mb-8">

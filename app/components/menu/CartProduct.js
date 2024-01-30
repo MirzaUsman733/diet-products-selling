@@ -3,7 +3,6 @@ import Trash from "@/app/components/icons/Trash";
 import Image from "next/image";
 
 export default function CartProduct({ product, onRemove }) {
-  console.log(product)
   return (
     <div className="flex items-center gap-4 border-b py-4">
       <div className="w-24">
@@ -29,7 +28,7 @@ export default function CartProduct({ product, onRemove }) {
       <div className="text-lg font-semibold">
         ${cartProductPrice(product)}
       </div>
-      {onRemove && (
+      {!!onRemove && (
         <div className="ml-2">
           <button
             type="button"

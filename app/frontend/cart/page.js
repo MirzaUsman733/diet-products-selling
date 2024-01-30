@@ -6,13 +6,13 @@ import SectionHeaders from "@/app/components/layout/SectionHeaders";
 import CartProduct from "@/app/components/menu/CartProduct";
 import { useProfile } from "@/app/components/UseProfile";
 import Image from "next/image";
-import {useContext, useEffect, useState} from "react";
+import { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 export default function CartPage() {
-  const {cartProducts,removeCartProduct} = useContext(CartContext);
+  const { cartProducts, removeCartProduct } = useContext(CartContext);
   const [address, setAddress] = useState({});
-  const {data:profileData} = useProfile();
+  const { data: profileData } = useProfile();
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -24,7 +24,7 @@ export default function CartPage() {
 
   useEffect(() => {
     if (profileData?.city) {
-      const {phone, streetAddress, city, postalCode, country} = profileData;
+      const { phone, streetAddress, city, postalCode, country } = profileData;
       const addressFromProfile = {
         phone,
         streetAddress,
@@ -41,16 +41,15 @@ export default function CartPage() {
     subtotal += cartProductPrice(p);
   }
   function handleAddressChange(propName, value) {
-    setAddress(prevAddress => ({...prevAddress, [propName]:value}));
+    setAddress(prevAddress => ({ ...prevAddress, [propName]: value }));
   }
   async function proceedToCheckout(ev) {
     ev.preventDefault();
-    // address and shopping cart products
 
     const promise = new Promise((resolve, reject) => {
       fetch('/api/checkout', {
         method: 'POST',
-        headers: {'Content-Type':'application/json'},
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           address,
           cartProducts,
@@ -71,7 +70,9 @@ export default function CartPage() {
       error: 'Something went wrong... Please try again later',
     })
   }
-
+  function handleRemoveProduct(product) {
+    removeCartProduct(product);
+  }
   if (cartProducts?.length === 0) {
     return (
       <section className="mt-8 text-center">
@@ -95,7 +96,7 @@ export default function CartPage() {
             <CartProduct
               key={index}
               product={product}
-              onRemove={removeCartProduct}
+              onRemove={() => handleRemoveProduct(product)}
             />
           ))}
           <div className="py-2 pr-16 flex justify-end items-center">
@@ -118,7 +119,7 @@ export default function CartPage() {
               addressProps={address}
               setAddressProp={handleAddressChange}
             />
-            <button type="submit" className="bg-blue-500">Pay ${subtotal+5}</button>
+            <button type="submit" className="bg-blue-500">Pay ${subtotal + 5}</button>
           </form>
         </div>
       </div>

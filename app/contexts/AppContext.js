@@ -1,6 +1,6 @@
 'use client';
-import {SessionProvider} from "next-auth/react";
-import {createContext, useEffect, useState} from "react";
+import { SessionProvider } from "next-auth/react";
+import { createContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 export const CartContext = createContext({});
@@ -18,14 +18,14 @@ export function cartProductPrice(cartProduct) {
   return price;
 }
 
-export function AppProvider({children}) {
-  const [cartProducts,setCartProducts] = useState([]);
+export function AppProvider({ children }) {
+  const [cartProducts, setCartProducts] = useState([]);
 
   const ls = typeof window !== 'undefined' ? window.localStorage : null;
 
   useEffect(() => {
     if (ls && ls.getItem('cart')) {
-      setCartProducts( JSON.parse( ls.getItem('cart') ) );
+      setCartProducts(JSON.parse(ls.getItem('cart')));
     }
   }, []);
 
@@ -34,13 +34,12 @@ export function AppProvider({children}) {
     saveCartProductsToLocalStorage([]);
   }
 
-  function removeCartProduct(indexToRemove) {
-    setCartProducts(prevCartProducts => {
-      const newCartProducts = prevCartProducts
-        .filter((v,index) => index !== indexToRemove);
-      saveCartProductsToLocalStorage(newCartProducts);
-      return newCartProducts;
-    });
+  function removeCartProduct(productToRemove) {
+    const updatedCartProducts = cartProducts.filter(
+      (product) => product !== productToRemove
+    );
+    setCartProducts(updatedCartProducts);
+    saveCartProductsToLocalStorage(updatedCartProducts);
     toast.success('Product removed');
   }
 
@@ -50,9 +49,9 @@ export function AppProvider({children}) {
     }
   }
 
-  function addToCart(product, size=null, extras=[]) {
+  function addToCart(product, size = null, extras = []) {
     setCartProducts(prevProducts => {
-      const cartProduct = {...product, size, extras};
+      const cartProduct = { ...product, size, extras };
       const newProducts = [...prevProducts, cartProduct];
       saveCartProductsToLocalStorage(newProducts);
       return newProducts;
