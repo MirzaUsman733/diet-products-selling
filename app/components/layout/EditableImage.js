@@ -8,7 +8,7 @@ function EditableImage({ link, setLink }) {
 
       reader.onload = function (event) {
         const base64String = event.target.result;
-        setLink(base64String); // Update image link at the parent component level
+        setLink(base64String);
       };
 
       reader.onerror = function (error) {
@@ -29,7 +29,7 @@ function EditableImage({ link, setLink }) {
         </div>
       )}
       <label>
-        <input type="file" accept="image/*" onChange={handleFileChange} />
+        <input type="file" accept="image/*" className='hidden' onChange={handleFileChange} />
         <span className="block border border-gray-300 rounded-lg p-2 text-center cursor-pointer">Change image</span>
       </label>
     </>
@@ -37,3 +37,8 @@ function EditableImage({ link, setLink }) {
 }
 
 export default EditableImage;
+
+
+
+
+

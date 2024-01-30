@@ -1,36 +1,35 @@
-import { v2 as cloudinary } from 'cloudinary';
-import uniqid from 'uniqid';
+// pages/api/upload.js
 
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});
+import { IncomingForm } from 'formidable';
+import fs from 'fs';
+import path from 'path';
 
-export async function POST(req) {
-  const data = await req.formData();
-  if (data.get('file')) {
-    // upload the file
-    const file = data.get('file');
+export default async function handler(req, res) {
+  if (req.method === 'POST') {
+    const form = new IncomingForm();
+    form.uploadDir = path.join(process.cwd(), 'public', 'uploads'); // Define the upload directory
 
-    const chunks = [];
-    for await (const chunk of file.stream()) {
-      chunks.push(chunk);
-    }
-    const buffer = Buffer.concat(chunks);
+    form.parse(req, (err, fields, files) => {
+      if (err) {
+        console.error('Error parsing form:', err);
+        return res.status(500).json({ error: 'Internal server error' });
+      }
 
-    const result = await cloudinary.uploader.upload(buffer.toString('base64'), {
-      folder: 'usman',
-      resource_type: 'auto',
-      public_id: uniqid(),
-      format: file.name.split('.').slice(-1)[0],
-      type: 'upload',
-      unique_filename: false,
-      overwrite: true,
+      const oldPath = files.image.path;
+      const newPath = path.join(form.uploadDir, files.image.name);
+
+      fs.rename(oldPath, newPath, (err) => {
+        if (err) {
+          console.error('Error moving file:', err);
+          return res.status(500).json({ error: 'Internal server error' });
+        }
+
+        const imageUrl = `/uploads/${files.image.name}`;
+        res.status(200).json({ imageUrl });
+      });
     });
-
-    const link = result.secure_url;
-    return Response.json(link);
+  } else {
+    res.setHeader('Allow', ['POST']);
+    res.status(405).end(`Method ${req.method} Not Allowed`);
   }
-  return Response.json(true);
 }
