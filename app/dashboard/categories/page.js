@@ -97,7 +97,7 @@ export default function CategoriesPage() {
               className="block py-2 w-full rounded-md border border-gray-300 shadow-sm focus:cursor-text ps-2"
             />
           </div>
-          <div className="flex gap-2 items-center"> {/* Adjusted alignment */}
+          <div className="flex gap-2 items-center">
             <button className="border border-primary bg-blue-500 px-4 py-2 text-white rounded-md hover:bg-blue-600" type="submit">
               {editedCategory ? 'Update' : 'Create'}
             </button>
