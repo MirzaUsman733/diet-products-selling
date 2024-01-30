@@ -4,11 +4,11 @@ import InfoBox from "@/app/components/layout/InfoBox";
 import SuccessBox from "@/app/components/layout/SuccessBox";
 import UserForm from "@/app/components/layout/UserForm";
 import UserTabs from "@/app/components/layout/UserTabs";
-import {useSession} from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import {redirect} from "next/navigation";
-import {useEffect, useState} from "react";
+import { redirect } from "next/navigation";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 export default function ProfilePage() {
@@ -17,7 +17,7 @@ export default function ProfilePage() {
   const [user, setUser] = useState(null);
   // const [isAdmin, setIsAdmin] = useState(false);
   const [profileFetched, setProfileFetched] = useState(false);
-  const {status} = session;
+  const { status } = session;
 
   useEffect(() => {
     if (status === 'authenticated') {
@@ -37,7 +37,7 @@ export default function ProfilePage() {
     const savingPromise = new Promise(async (resolve, reject) => {
       const response = await fetch('/api/profile', {
         method: 'PUT',
-        headers: {'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
       if (response.ok)
@@ -65,7 +65,7 @@ export default function ProfilePage() {
   return (
     <section className="mt-8">
       <UserTabs />
-      <div className="max-w-2xl mx-auto mt-8">
+      <div className="max-w-md sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-7xl mx-auto mt-8">
         <UserForm user={user} onSave={handleProfileInfoUpdate} />
       </div>
     </section>

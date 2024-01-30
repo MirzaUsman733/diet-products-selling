@@ -81,13 +81,13 @@ export default function EditMenuItemPage() {
   // }
 
   return (
-    <section className="mt-8">
+    <section className="max-w-md sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-7xl mx-auto mt-8">
       <UserTabs isAdmin={true} />
-      <div className="max-w-2xl mx-auto mt-8">
+      <div className="mt-8">
         <Link href={'/dashboard/menu-items'} className="button">
           <Left />
-          <span>Show all menu items</span>
         </Link>
+        <span>Show all menu items</span>
       </div>
       <MenuItemForm menuItem={menuItem} onSubmit={handleFormSubmit} />
       <div className="max-w-md mx-auto mt-2">

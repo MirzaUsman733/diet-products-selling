@@ -69,7 +69,7 @@ export default function MenuItemPriceProps({ name, addLabel, props, setProps }) 
               <button
                 type="button"
                 onClick={() => removeProp(index)}
-                className="bg-white mb-2 px-2"
+                className="bg-white p-2 rounded-md"
               >
                 <Trash />
               </button>
@@ -77,14 +77,14 @@ export default function MenuItemPriceProps({ name, addLabel, props, setProps }) 
           </div>
         ))}
         <div className="items-center flex justify-center">
-        <button
-          type="button"
-          onClick={addProp}
-          className="bg-white items-center mt-5 flex px-5 py-2 rounded-2xl justify-center"
-        >
-          <Plus className="w-5 h-4 " />
-          <span>{addLabel}</span>
-        </button>
+          <button
+            type="button"
+            onClick={addProp}
+            className="bg-white items-center mt-5 flex px-5 py-2 rounded-2xl justify-center"
+          >
+            <Plus className="w-5 h-4 " />
+            <span>{addLabel}</span>
+          </button>
         </div>
       </div>
     </div>

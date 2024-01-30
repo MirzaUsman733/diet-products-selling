@@ -4,16 +4,16 @@ import Right from "@/app/components/icons/Right";
 import EditableImage from "@/app/components/layout/EditableImage";
 import MenuItemForm from "@/app/components/layout/MenuItemForm";
 import UserTabs from "@/app/components/layout/UserTabs";
-import {useProfile} from "@/app/components/UseProfile";
+import { useProfile } from "@/app/components/UseProfile";
 import Link from "next/link";
-import {redirect} from "next/navigation";
-import {useState} from "react";
+import { redirect } from "next/navigation";
+import { useState } from "react";
 import toast from "react-hot-toast";
 
 export default function NewMenuItemPage() {
 
   const [redirectToItems, setRedirectToItems] = useState(false);
-  const {loading, data} = useProfile();
+  const { loading, data } = useProfile();
 
   async function handleFormSubmit(ev, data) {
     ev.preventDefault();
@@ -51,13 +51,13 @@ export default function NewMenuItemPage() {
   // }
 
   return (
-    <section className="mt-8">
+    <section className="max-w-md sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-7xl mx-auto mt-8">
       <UserTabs isAdmin={true} />
-      <div className="max-w-2xl mx-auto mt-8">
-        <Link href={'/dashboard/menu-items'} className="button">
+      <div className="mt-8">
+        <Link href={'/dashboard/menu-items'} className="button w-20">
           <Left />
-          <span>Show all menu items</span>
         </Link>
+        <span>Show all menu items</span>
       </div>
       <MenuItemForm menuItem={null} onSubmit={handleFormSubmit} />
     </section>

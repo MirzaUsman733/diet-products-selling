@@ -20,19 +20,19 @@ function EditableImage({ link, setLink }) {
   }
 
   return (
-    <>
+    <div className="mt-2">
       {link ? (
-        <img className="rounded-lg w-full h-full mb-1" src={link} alt="Selected Image" />
+        <img className="rounded-lg m-auto mb-1" style={{ maxHeight: "200px" }} src={link} alt="Selected Image" />
       ) : (
         <div className="text-center bg-gray-200 p-4 text-gray-500 rounded-lg mb-1">
           No image selected
         </div>
       )}
-      <label>
+      <label className=''>
         <input type="file" accept="image/*" className='hidden' onChange={handleFileChange} />
         <span className="block border border-gray-300 rounded-lg p-2 text-center cursor-pointer">Change image</span>
       </label>
-    </>
+    </div>
   );
 }
 

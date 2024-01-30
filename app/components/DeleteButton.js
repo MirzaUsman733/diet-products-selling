@@ -6,14 +6,14 @@ export default function DeleteButton({ label, onDelete }) {
 
   if (showConfirm) {
     return (
-      <div className="fixed bg-black bg-opacity-80 inset-0 flex items-center h-300 justify-center align-center">
+      <div className="fixed bg-black bg-opacity-80 inset-0 flex items-center h-300 justify-center align-center z-50">
         <div className="bg-white p-10 rounded-lg">
           <div>Are you sure you want to delete?</div>
-          <div className="flex items-center gap-1 mt-5 mx-auto">
+          <div className="flex items-center justify-around gap-1 mt-5 mx-auto">
             <button
               type="button"
               onClick={() => setShowConfirm(false)}
-              className="bg-gray-300 py-2 px-1 rounded"
+              className="bg-gray-300 py-2 px-2 rounded"
             >
               Cancel
             </button>
@@ -23,7 +23,7 @@ export default function DeleteButton({ label, onDelete }) {
                 setShowConfirm(false);
               }}
               type="button"
-              className="bg-red-500 text-white py-2 px-2 rounded"
+              className="bg-red-500 text-white py-2 px-3 rounded"
             >
               Yes, delete!
             </button>
