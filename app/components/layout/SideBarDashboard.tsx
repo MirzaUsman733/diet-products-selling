@@ -255,37 +255,33 @@
 
 
 'use client'
-import React from "react";
-import { styled } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
-import CssBaseline from "@mui/material/CssBaseline";
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import List from "@mui/material/List";
-import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
+import AddTaskIcon from '@mui/icons-material/AddTask';
+import ApprovalIcon from '@mui/icons-material/Approval';
+import CategoryIcon from '@mui/icons-material/Category';
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import ListItem from "@mui/material/ListItem";
+import GroupIcon from "@mui/icons-material/Group";
+import HomeIcon from "@mui/icons-material/Home";
+import InventoryIcon from '@mui/icons-material/Inventory';
+import LoginIcon from '@mui/icons-material/Login';
+import LogoutIcon from '@mui/icons-material/Logout';
+import MenuIcon from "@mui/icons-material/Menu";
+import ViewModuleIcon from '@mui/icons-material/ViewModule';
+import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import CssBaseline from "@mui/material/CssBaseline";
+import Divider from "@mui/material/Divider";
+import Drawer from "@mui/material/Drawer";
+import IconButton from "@mui/material/IconButton";
+import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
-import Link from "next/link";
-import HomeIcon from "@mui/icons-material/Home";
-import GroupIcon from "@mui/icons-material/Group";
-import CategoryIcon from '@mui/icons-material/Category';
-import AddTaskIcon from '@mui/icons-material/AddTask';
-import ViewModuleIcon from '@mui/icons-material/ViewModule';
-import InventoryIcon from '@mui/icons-material/Inventory';
-import ApprovalIcon from '@mui/icons-material/Approval';
-import LoginIcon from '@mui/icons-material/Login';
-import LogoutIcon from '@mui/icons-material/Logout';
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import { styled } from "@mui/material/styles";
 import { signOut, useSession } from "next-auth/react";
+import Link from "next/link";
+import React from "react";
 
 const drawerWidth = 240;
 
@@ -344,6 +340,7 @@ interface SidebarProps {
 
 const SidebarDashboard: React.FC<SidebarProps> = ({ children }) => {
   const [open, setOpen] = React.useState(true);
+  console.log("🚀 ~ open:", open)
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -369,6 +366,7 @@ const SidebarDashboard: React.FC<SidebarProps> = ({ children }) => {
     };
   }, []);
   const { data: session } = useSession();
+  console.log("🚀 ~ session:", session)
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />

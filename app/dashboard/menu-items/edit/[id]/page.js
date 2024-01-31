@@ -82,7 +82,7 @@ export default function EditMenuItemPage() {
 
   return (
     <section className="max-w-md sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-7xl mx-auto mt-8">
-      <UserTabs isAdmin={true} />
+      
       <div className="mt-8">
         <Link href={'/dashboard/menu-items'} className="button">
           <Left />
