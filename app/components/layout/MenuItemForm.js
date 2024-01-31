@@ -1,5 +1,3 @@
-import Plus from "@/app/components/icons/Plus";
-import Trash from "@/app/components/icons/Trash";
 import EditableImage from "@/app/components/layout/EditableImage";
 import MenuItemPriceProps from "@/app/components/layout/MenuItemPriceProps";
 import { useEffect, useState } from "react";
@@ -49,9 +47,6 @@ export default function MenuItemForm({ onSubmit, menuItem }) {
       className="mt-8 max-w-full mx-auto"
     >
       <div className="grid items-start gap-4 md:grid-cols-[5fr,5fr]">
-        {/* <div>
-          <EditableImage link={image} setLink={setImage} />
-        </div> */}
         <div className="flex-grow">
           <label className="block text-sm font-medium text-gray-700">Item name</label>
           <input
@@ -111,9 +106,8 @@ export default function MenuItemForm({ onSubmit, menuItem }) {
           <Editor
             apiKey="0ww6aa6ikkaan6ba6quxckauho9cnonhzczagghofh5md40x"
             initialValue={menuItem?.description || ''}
-            // initialValue="<p>This is the initial content of the editor.</p>"
             init={{
-              height: '200px',
+              height: '290px',
               menubar: false,
               plugins: [
                 'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',

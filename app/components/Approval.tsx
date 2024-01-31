@@ -111,7 +111,6 @@ const Approval: React.FC = () => {
                     >
                       <Button
                         variant="outlined"
-                        // style={{}}
                         className="text-center m-auto"
                         onClick={() => {
                           approveUser(user._id);
