@@ -10,7 +10,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
       <UserDataProvider>
-        <SidebarDashboard>{children}</SidebarDashboard>
+        <div style={{width: "500px"}} className="w-auto md:w-[250px]">
+        <SidebarDashboard/>
+        </div>
+        {children}
       </UserDataProvider>
     </>
   );
