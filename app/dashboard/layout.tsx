@@ -10,10 +10,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
       <UserDataProvider>
-        <SidebarDashboard>
-        {children}
-        </SidebarDashboard>
-        </UserDataProvider>
+        <SidebarDashboard>{children}</SidebarDashboard>
+      </UserDataProvider>
     </>
   );
 };

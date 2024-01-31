@@ -6,7 +6,6 @@ import SessionProvider from "@/app/utils/SessionProvider";
 import { AppProvider } from "@/app/contexts/AppContext";
 import { UserProvider } from "@/app/contexts/userData";
 import { UserDataProvider } from "@/app/contexts/userDataContext";
-import Navbar from "./components/Navbar";
 import { Toaster } from "react-hot-toast";
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,7 +28,6 @@ export default async function RootLayout({
             <UserDataProvider>
               <AppProvider>
                 <Toaster />
-                <Navbar />
                 <div className="gap-2 mb-10">{children}</div>
               </AppProvider>
             </UserDataProvider>

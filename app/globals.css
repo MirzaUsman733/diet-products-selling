@@ -5,13 +5,13 @@
 @import '@/app/css/ketoHomeHeader.css';
 @import '@/app/css/ketoCalculator.css';
 @import '@/app/css/auth.css';
-/* html,
+/* html, */
 body {
-    width: 1720px;
+    /* width: 1720px; */
     margin: 0 auto;
     overflow-x: hidden;
 }
-@media screen and (max-width: 1720px) {
+/* @media screen and (max-width: 1720px) {
     .mobile-hide {
         display: none;
     }

@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import { UserDataProvider } from "@/app/contexts/userDataContext";
+import Navbar from "@/app/components/Navbar";
 
 interface LayoutProps {
   children: ReactNode;
@@ -8,7 +9,8 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
-        <UserDataProvider>{children}</UserDataProvider>
+      <Navbar />
+      <UserDataProvider>{children}</UserDataProvider>
     </>
   );
 };
