@@ -23,6 +23,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        
         <UserProvider>
           <SessionProvider session={session}>
             <UserDataProvider>
